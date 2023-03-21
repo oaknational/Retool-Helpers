@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Testing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script type="module">
+      import { add } from "../lib/esm/index.js";
+      console.log("add 1 and 2 using an imported module", add(1, 2));
+    </script>
+  </head>
+  <body>
+    <div class="message">open the console</div>
+  </body>
+</html>

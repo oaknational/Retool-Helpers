@@ -1,0 +1,16 @@
+# Node files
+node_modules
+package-lock.json
+
+# Generated files
+.next
+next-env.d.ts
+out
+dist
+storybook-static
+
+# Test coverage
+coverage
+
+# Stryker temp files
+reports

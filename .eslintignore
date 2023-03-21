@@ -1,0 +1,10 @@
+node_modules
+package-lock.json
+lib
+public
+out
+dist
+.husky
+reports
+
+!.github

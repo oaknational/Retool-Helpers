@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES6", "DOM"],
+    "noEmit": true
+  },
+  "include": [
+    "../**/*.ts",
+    "../.eslintrc.cjs",
+    "../commitlint.config.cjs",
+    "../jest.config.ts"
+  ],
+  "exclude": ["node_modules", "dist", "reports"]
+}
