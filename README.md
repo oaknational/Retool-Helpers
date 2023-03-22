@@ -4,9 +4,8 @@ Retool helper functions that run in a browser environment (don't use Node APIs).
 
 ## To Do
 
+- Add publishing to npm to release creation workflow.
 - Use an actual browser compatible test framework for the browser tests.
-- Test in CI.
-- Automate semantic versioning and release creation, including publishing new releases to npm.
 
 ## Development
 
