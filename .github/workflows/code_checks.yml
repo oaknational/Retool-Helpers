@@ -27,6 +27,9 @@ jobs:
       # Unit tests
       - run: npm run test
 
+      # DEBUG
+      - run: cat coverage/lcov.info
+
       # Manually run the SonarCloud scan so we can send test coverage information.
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
