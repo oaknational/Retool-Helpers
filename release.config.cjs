@@ -14,14 +14,7 @@ module.exports = {
     "@semantic-release/release-notes-generator",
     // Generate the Github release.
     // https://github.com/semantic-release/github
-    [
-      "@semantic-release/github",
-      {
-        assets: [
-          { path: "lib/cjs", label: "CJS module distribution" },
-          { path: "lib/esm", label: "ESM module distribution" },
-        ],
-      },
-    ],
+
+    "@semantic-release/github",
   ],
 };
