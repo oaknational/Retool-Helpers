@@ -28,3 +28,7 @@ We haven't done this bit yet.
 ## Use
 
 The ESM modules can be imported into a `<script>` tag in a modern browser, see the [browser test file](browser_test/index.html).
+
+## Contributions
+
+We are not currently accepting external contributions, thank you.
