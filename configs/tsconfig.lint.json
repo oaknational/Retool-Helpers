@@ -8,7 +8,7 @@
     "../**/*.ts",
     "../.eslintrc.cjs",
     "../commitlint.config.cjs",
-    "../release.config.js",
+    "../release.config.cjs",
     "../jest.config.ts"
   ],
   "exclude": ["node_modules", "dist", "reports"]

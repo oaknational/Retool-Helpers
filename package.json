@@ -33,11 +33,6 @@
     "semantic-release": "semantic-release",
     "test": "jest"
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oaknational/retool-helpers.git"
