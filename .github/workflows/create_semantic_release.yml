@@ -1,0 +1,46 @@
+# Create a semantic release, including
+# - a package.json version number
+# - an updated change log file
+# - a Github release, which will trigger a deployment
+name: Create Github Release
+
+# All changes to `main` have gone through
+# automated checks and should have gone
+# through code review and manual checks
+# where appropriate.
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  semantic_release:
+    name: semantic release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: "npm"
+
+      # Install
+      - run: npm ci
+
+      # Build, so the package files exist.
+      - run: npm run build
+
+      # Create Github release using semantic-release package.
+      # See config here release.config.js
+      # Note, this runs on `main` and creates the release tag.
+      # and updates the changelog file.
+      - name: do release
+        run: npx semantic-release
+        env:
+          # Using the default token means that the release
+          # won't create a release event to trigger further
+          # workflows, if you need that see
+          # https://github.com/semantic-release/github#github-authentication
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

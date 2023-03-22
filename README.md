@@ -4,9 +4,8 @@ Retool helper functions that run in a browser environment (don't use Node APIs).
 
 ## To Do
 
+- Add publishing to npm to release creation workflow.
 - Use an actual browser compatible test framework for the browser tests.
-- Test in CI.
-- Automate semantic versioning and release creation, including publishing new releases to npm.
 
 ## Development
 
@@ -30,3 +29,7 @@ We haven't done this bit yet.
 ## Use
 
 The ESM modules can be imported into a `<script>` tag in a modern browser, see the [browser test file](browser_test/index.html).
+
+## Contributions
+
+We are not currently accepting external contributions, thank you.
