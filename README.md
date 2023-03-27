@@ -16,6 +16,12 @@ Don't use Node APIs, these functions are for use in a browser environment.
 
 The Typescript is compiled into ESM and CJS compatible modules. The ESM modules can be imported directly into modern browsers. The ESM modules are then bundled using `esbundler` and exposed on the browser `Window` object under the `OakRetoolHelpers` object.
 
+### CI/CD
+
+#### GitHub Secrets Required for Workflows
+
+- `secrets.SONAR_TOKEN` required for running Sonar Cloud with test coverage report uploading.
+
 ## Testing
 
 - Unit tests: `npm run test` - these run in CI, but will not throw if you accidentally include Node APIs in the library.
