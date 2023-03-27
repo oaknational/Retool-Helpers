@@ -6,5 +6,6 @@ out
 dist
 .husky
 reports
+coverage
 
 !.github
