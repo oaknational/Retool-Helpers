@@ -24,6 +24,9 @@ jobs:
       # Lint.
       - run: npm run lint
 
+      # Check types.
+      - run: npm run check-types
+
       # Unit tests
       - run: npm run test
 
