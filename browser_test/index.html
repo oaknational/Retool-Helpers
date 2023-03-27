@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Testing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script type="module">
-      import { add } from "../lib/esm/index.js";
-      console.log("add 1 and 2 using an imported module", add(1, 2));
-    </script>
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
   </head>
   <body>
-    <div class="message">open the console</div>
+    <div id="mocha"></div>
+
+    <script type="module" src="https://unpkg.com/chai/chai.js"></script>
+    <script type="module" src="https://unpkg.com/mocha/mocha.js"></script>
+
+    <script type="module" class="mocha-init">
+      mocha.setup("bdd");
+      mocha.checkLeaks();
+    </script>
+    <script type="module">
+      import oak from "../lib/esm/index.js";
+      describe("add things up", () => {
+        it("adds 1 and 1", () => {
+          chai.assert(oak.add(1, 1), 2);
+        });
+      });
+    </script>
+    <script type="module" class="mocha-exec">
+      mocha.run();
+    </script>
   </body>
 </html>

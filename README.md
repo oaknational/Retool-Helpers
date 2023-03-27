@@ -5,7 +5,6 @@ Retool helper functions that run in a browser environment (don't use Node APIs).
 ## To Do
 
 - Add publishing to npm to release creation workflow.
-- Use an actual browser compatible test framework for the browser tests.
 
 ## Development
 
@@ -19,8 +18,8 @@ The Typescript is compiled into ESM and CJS compatible modules. The ESM modules 
 
 ## Testing
 
-- Unit tests: `npm run test`
-- Browser tests: `npm run browser-test`, you will need to open the console to check that the function has been imported and run.
+- Unit tests: `npm run test` - these run in CI, but will not throw if you accidentally include Node APIs in the library.
+- Browser tests: `npm run browser-test`, this will open a local browser window and run Mocha tests in it. These don't run in CI because we can't extract the test result. Because they run in a browser they will throw if you accidentally include non-Browser APIs, e.g. Node's `process.env`.
 
 ## Publishing
 

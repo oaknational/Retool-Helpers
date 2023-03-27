@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "prebrowser-test": "npm run build",
-    "browser-test": "http-server -o browser_test",
+    "browser-test": "http-server -c-1 -o browser_test",
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
     "build:esm": "tsc -p ./configs/tsconfig.esm.json",
