@@ -2,7 +2,9 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "lib": ["ES6", "DOM"],
-    "noEmit": true
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "NodeNext"
   },
   "include": [
     "../**/*.ts",
@@ -11,5 +13,5 @@
     "../release.config.cjs",
     "../jest.config.ts"
   ],
-  "exclude": ["node_modules", "dist", "reports"]
+  "exclude": ["node_modules", "dist", "reports", "coverage"]
 }
