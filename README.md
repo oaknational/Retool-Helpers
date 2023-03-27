@@ -14,7 +14,7 @@ Don't use Node APIs, these functions are for use in a browser environment.
 
 ## Building
 
-The Typescript is compiled into ESM and CJS compatible modules. The ESM modules can be imported directly into modern browsers.
+The Typescript is compiled into ESM and CJS compatible modules. The ESM modules can be imported directly into modern browsers. The ESM modules are then bundled using `esbundler` and exposed on the browser `Window` object under the `OakRetoolHelpers` object.
 
 ## Testing
 
@@ -27,7 +27,9 @@ We haven't done this bit yet.
 
 ## Use
 
-The ESM modules can be imported into a `<script>` tag in a modern browser, see the [browser test file](browser_test/index.html).
+The ESM modules can be imported into a `<script>` tag in a modern browser. See the [browser test file](browser_test/index.html) for an example.
+
+The bundled code can be included on a page as a `<script>` tag. Once loaded the functions will be available on the `OakRetoolHelpers` object attached to the global `Window` scope, e.g. `OakRetoolHelpers.slugify(myString)`. See the [browser test file](browser_test/index.html) for an example.
 
 ## Contributions
 
