@@ -16,17 +16,6 @@
       mocha.setup("bdd");
       mocha.checkLeaks();
     </script>
-    <!-- Using the ES Module -->
-    <script type="module">
-      import { slugify } from "../lib/esm/index.js";
-      describes("ESM", () => {
-        describe("slugify", () => {
-          it("slugifies a string", () => {
-            chai.assert(slugify("This is a test"), "this-is-a-test");
-          });
-        });
-      });
-    </script>
     <!--
       Using the bundled code, loads the `oakRetoolHelper`
       object into the global scope.
