@@ -2,10 +2,6 @@
 
 Retool helper functions that run in a browser environment (don't use Node APIs).
 
-## To Do
-
-- Add publishing to npm to release creation workflow.
-
 ## Development
 
 Functions should be imported into, then exported from, [`src/index.ts`](src/index.ts).
@@ -29,7 +25,7 @@ The Typescript is compiled into ESM and CJS compatible modules. The ESM modules 
 
 ## Publishing
 
-We haven't done this bit yet.
+New GitHub releases are automatically created with the [Semantic Release](https://www.npmjs.com/package/semantic-release) package on merging a PR, and automatically released to [npmjs.com](https://www.npmjs.com/package/@oaknational/retool-helpers).
 
 ## Use
 
