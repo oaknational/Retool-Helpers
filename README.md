@@ -2,19 +2,21 @@
 
 Retool helper functions that run in a browser environment (don't use Node APIs).
 
-## To Do
-
-- Add publishing to npm to release creation workflow.
-
 ## Development
 
-Functions should be exported from [`src/index.ts`](src/index.ts). You can import them into that file from other files.
+Functions should be imported into, then exported from, [`src/index.ts`](src/index.ts).
 
 Don't use Node APIs, these functions are for use in a browser environment.
 
 ## Building
 
-The Typescript is compiled into ESM and CJS compatible modules. The ESM modules can be imported directly into modern browsers.
+The Typescript is compiled into ESM and CJS compatible modules. The ESM modules are then bundled using `esbundler` and exposed on the browser `Window` object under the `OakRetoolHelpers` object.
+
+### CI/CD
+
+#### GitHub Secrets Required for Workflows
+
+- `secrets.SONAR_TOKEN` required for running Sonar Cloud with test coverage report uploading.
 
 ## Testing
 
@@ -23,11 +25,11 @@ The Typescript is compiled into ESM and CJS compatible modules. The ESM modules 
 
 ## Publishing
 
-We haven't done this bit yet.
+New GitHub releases are automatically created with the [Semantic Release](https://www.npmjs.com/package/semantic-release) package on merging a PR, and automatically released to [npmjs.com](https://www.npmjs.com/package/@oaknational/retool-helpers).
 
 ## Use
 
-The ESM modules can be imported into a `<script>` tag in a modern browser, see the [browser test file](browser_test/index.html).
+The bundled code can be included on a page as a `<script>` tag. Once loaded the functions will be available on the `OakRetoolHelpers` object attached to the global `Window` scope, e.g. `OakRetoolHelpers.slugify(myString)`. See the [browser test file](browser_test/index.html) for an example.
 
 ## Contributions
 

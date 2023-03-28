@@ -16,24 +16,28 @@
       mocha.setup("bdd");
       mocha.checkLeaks();
     </script>
-    <!-- Using the ES Module -->
-    <script type="module">
-      import oak from "../lib/esm/index.js";
-      describe("ESM add things up", () => {
-        it("adds 1 and 1", () => {
-          chai.assert(oak.add(1, 1), 2);
-        });
-      });
-    </script>
     <!--
       Using the bundled code, loads the `oakRetoolHelper`
       object into the global scope.
     -->
     <script type="module" src="../lib/bundle/index.js"></script>
     <script type="module">
-      describe("OakRetoolHelpers add things up", () => {
-        it("adds 1 and 1", () => {
-          chai.assert(OakRetoolHelpers.add(1, 1), 2);
+      describe("OakRetoolHelpers", () => {
+        describe("slugify", () => {
+          it("slugifies a string", () => {
+            chai.assert(
+              OakRetoolHelpers.slugify("This is a test"),
+              "this-is-a-test"
+            );
+          });
+          it("handles special characters", () => {
+            chai.assert(
+              OakRetoolHelpers.slugify(
+                "  ©𝄢𝄫🎵 Hello World µ˜∫√ ≈ & ćøḿṕæňÿ …ƒ´¬∂∑≈¬¬¬¬¬¬ --- "
+              ),
+              "hello-world-and-company"
+            );
+          });
         });
       });
     </script>

@@ -44,3 +44,4 @@ jobs:
           # workflows, if you need that see
           # https://github.com/semantic-release/github#github-authentication
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -2,21 +2,15 @@
  * These functions must run in the browser, do not use Node APIs.
  */
 
-/**
- * Add two numbers
- * @param a
- * @param b
- * @returns
- */
-export const add = (a: number, b: number): number => {
-  return a + b;
-};
+import slugify from "./slugify";
+
+export { slugify };
 
 // When bundled for the browser, this object
 // will be exposed on the Window object as
 // `OakRetoolHelpers`.
 const oakRetoolHelpers = {
-  add,
+  slugify,
 };
 declare global {
   interface Window {
