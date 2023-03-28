@@ -3,16 +3,6 @@
  */
 
 /**
- * Add two numbers
- * @param a
- * @param b
- * @returns
- */
-export const add = (a: number, b: number): number => {
-  return a + b;
-};
-
-/**
  * Slugify function, based on https://gist.github.com/hagemann/382adfc57adbd5af078dc93feef01fe1
  * @param input the string to slugify
  * @returns the input string modified for use as a slug
@@ -42,7 +32,6 @@ export function slugify(input: string): string {
 // will be exposed on the Window object as
 // `OakRetoolHelpers`.
 const oakRetoolHelpers = {
-  add,
   slugify,
 };
 declare global {
