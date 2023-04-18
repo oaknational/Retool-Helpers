@@ -10,7 +10,7 @@ export { slugify };
 // will be exposed on the Window object as
 // `OakRetoolHelpers`.
 const oakRetoolHelpers = {
-  slugify: slugify,
+  slugify,
 };
 declare global {
   interface Window {
