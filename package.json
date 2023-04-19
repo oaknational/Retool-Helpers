@@ -26,7 +26,7 @@
     "postbuild": "npm run bundle",
     "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
     "build:esm": "tsc -p ./configs/tsconfig.esm.json",
-    "bundle": "esbuild lib/cjs/index.js --bundle --target=chrome70 --outfile=lib/bundle/index.js",
+    "bundle": "esbuild lib/esm/index.js --bundle --target=chrome98 --outfile=lib/bundle/index.js",
     "check-types": "tsc --project configs/tsconfig.esm.json",
     "clean": "rm -rf ./lib",
     "lint": "eslint .",
