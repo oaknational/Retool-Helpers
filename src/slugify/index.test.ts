@@ -1,4 +1,4 @@
-import { slugify } from ".";
+import { slugify } from "./index";
 
 describe("Retool helper functions", () => {
   describe("slugify", () => {

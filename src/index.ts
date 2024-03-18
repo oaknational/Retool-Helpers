@@ -2,7 +2,7 @@
  * These functions must run in the browser, do not use Node APIs.
  */
 
-import slugify from "./slugify";
+import { slugify } from "./slugify/index";
 
 export { slugify };
 
@@ -12,6 +12,9 @@ export { slugify };
 const oakRetoolHelpers = {
   slugify,
 };
+
+const google: string = "hi".replaceAll("i", "o");
+console.log({ google });
 declare global {
   interface Window {
     OakRetoolHelpers: typeof oakRetoolHelpers;
