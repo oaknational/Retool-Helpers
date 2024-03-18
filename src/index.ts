@@ -3,8 +3,9 @@
  */
 
 import { slugify } from "./slugify/index";
+import { removeSpecialCharacters } from "./handleSpecialCharacters/index";
 
-export { slugify };
+export { slugify, removeSpecialCharacters };
 
 // When bundled for the browser, this object
 // will be exposed on the Window object as
@@ -13,8 +14,6 @@ const oakRetoolHelpers = {
   slugify,
 };
 
-const google: string = "hi".replaceAll("i", "o");
-console.log({ google });
 declare global {
   interface Window {
     OakRetoolHelpers: typeof oakRetoolHelpers;
