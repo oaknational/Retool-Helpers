@@ -3,15 +3,20 @@
  */
 
 import { slugify } from "./slugify/index";
-import { removeSpecialCharacters } from "./handleSpecialCharacters/index";
+import {
+  removeSpecialCharacters,
+  insertSpecialCharacters,
+} from "./handleSpecialCharacters/index";
 
-export { slugify, removeSpecialCharacters };
+export { slugify, removeSpecialCharacters, insertSpecialCharacters };
 
 // When bundled for the browser, this object
 // will be exposed on the Window object as
 // `OakRetoolHelpers`.
 const oakRetoolHelpers = {
   slugify,
+  removeSpecialCharacters,
+  insertSpecialCharacters,
 };
 
 declare global {
