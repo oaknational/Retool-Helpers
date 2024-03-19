@@ -12,6 +12,7 @@ export { slugify, removeSpecialCharacters };
 // `OakRetoolHelpers`.
 const oakRetoolHelpers = {
   slugify,
+  removeSpecialCharacters,
 };
 
 declare global {
