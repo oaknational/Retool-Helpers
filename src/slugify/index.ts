@@ -3,7 +3,7 @@
  * @param input the string to slugify
  * @returns the input string modified for use as a slug
  */
-export default function slugify(input: string): string {
+export const slugify = (input: string): string => {
   const specialChars =
     "àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìıİłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;";
   const replacementChars =
@@ -13,7 +13,7 @@ export default function slugify(input: string): string {
   return input
     .toString()
     .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
+    .replaceAll(/\s+/g, "-") // Replace spaces with -
     .replace(specialCharRegex, (c) =>
       replacementChars.charAt(specialChars.indexOf(c))
     ) // Replace special characters
@@ -22,4 +22,4 @@ export default function slugify(input: string): string {
     .replace(/--+/g, "-") // Replace multiple - with single -
     .replace(/^-+/, "") // Trim - from start of text
     .replace(/-+$/, ""); // Trim - from end of text
-}
+};
