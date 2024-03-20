@@ -14,6 +14,12 @@ export const removeSpecialCharacters = (text: string): string => {
     .replaceAll(String.fromCharCode(92), String.fromCharCode(92, 92));
 };
 
+/**
+ * Inserts special characters
+ * replaces the first instance of the sanitised versions with the original single and/or double speech marks
+ * replaces all escape characters with the original tabs, line feeds, carriage returns and backslashes
+ * @param text string to insert original special characters
+ */
 export const insertSpecialCharacters = (text: string): string => {
   return text
     .replace("’", "'")
