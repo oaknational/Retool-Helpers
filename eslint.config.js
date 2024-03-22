@@ -39,5 +39,6 @@ export default tseslint.config({
       "error",
       { allowNumber: true },
     ],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
   },
 });
