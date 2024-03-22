@@ -9,7 +9,8 @@
     "../.eslintrc.cjs",
     "../commitlint.config.cjs",
     "../release.config.cjs",
-    "../jest.config.ts"
+    "../jest.config.ts",
+    "../eslint.config.js"
   ],
   "exclude": ["node_modules", "dist", "reports", "coverage"]
 }
