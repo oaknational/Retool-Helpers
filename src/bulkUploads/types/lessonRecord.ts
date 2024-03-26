@@ -10,9 +10,14 @@ export type JointArrayFields = {
   keywords: Keyword[] | null;
 };
 
+export type IdAndText = {
+  id: number;
+  text: string;
+};
+
 export type IdArrayFields = {
-  content_guidance: number[] | null;
-  tags: number[] | null;
+  content_guidance: IdAndText[] | number[] | null;
+  tags: IdAndText[] | number[] | null;
 };
 
 export type StringFields = {
@@ -26,7 +31,7 @@ export type StringFields = {
 export type BulkFields =
   | StringFields & SingleKeyArrayFields & IdArrayFields & JointArrayFields;
 
-export type LessonRecord = {
+export type LessonRecord = Partial<{
   lesson_id: number;
   slug: string;
   unitvariant_lessons_all_states: Unitvariantlessonsallstate[];
@@ -36,7 +41,8 @@ export type LessonRecord = {
   order: number;
   programme_fields: Programmefield[];
   display_order: number;
-} & BulkFields;
+}> &
+  BulkFields;
 
 type Programmefield = {
   keystage_id: number;

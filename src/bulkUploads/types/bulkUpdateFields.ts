@@ -42,15 +42,17 @@ export const isIdField = (
   return ["content_guidance", "tags"].includes(field);
 };
 
+export type SingleKeyArrayFieldPrimaryKey =
+  | keyof KeyLearningPoint
+  | keyof LessonOutline
+  | keyof TeacherTip
+  | keyof EquipmentAndResource;
+
 export type SingleKeyUpdateFields = {
   key: keyof SingleKeyArrayFields;
   type: "array";
   size: number;
-  primaryElementKey:
-    | keyof KeyLearningPoint
-    | keyof LessonOutline
-    | keyof TeacherTip
-    | keyof EquipmentAndResource;
+  primaryElementKey: SingleKeyArrayFieldPrimaryKey;
   max_length: number;
 };
 
@@ -65,12 +67,16 @@ export const isSingleKeyArrayField = (
   ].includes(field);
 };
 
+export type JointKeyArrayFieldPrimaryKey =
+  | keyof Keyword
+  | keyof MisconceptionsAndCommonMistake;
+
 export type JointKeyUpdateFields = {
   key: keyof JointArrayFields;
   type: "array";
   size: number;
   primaryElementKey: keyof Keyword | keyof MisconceptionsAndCommonMistake;
-  secondaryElementKey: string;
+  secondaryElementKey: keyof Keyword | keyof MisconceptionsAndCommonMistake;
   max_length_secondary: number;
   max_length: number;
 };

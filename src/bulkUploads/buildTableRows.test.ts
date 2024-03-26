@@ -8,10 +8,10 @@ import {
   handleIdField,
   handleHeaderRow,
   buildTableRows,
-} from "./index";
+} from "./buildTableRows";
 import { updateFields } from "./fixtures/updateFields";
 import { contentGuidanceMap } from "./fixtures/contentGuidanceMaps";
-import { cat_tag_map } from "./fixtures/catTagMaps";
+import { tagIdToTextMap } from "./fixtures/catTagMaps";
 
 describe("bulkUploads", () => {
   const lessons = JSON.parse(
@@ -150,7 +150,7 @@ describe("bulkUploads", () => {
         "content_guidance",
         row,
         updateFields,
-        cat_tag_map,
+        tagIdToTextMap,
         contentGuidanceMap
       );
       expect(row.length).toEqual(updateFields.content_guidance.size);
@@ -161,7 +161,7 @@ describe("bulkUploads", () => {
         "content_guidance",
         row,
         updateFields,
-        cat_tag_map,
+        tagIdToTextMap,
         contentGuidanceMap
       );
       expect(row.length).toEqual(updateFields.content_guidance.size);
@@ -172,7 +172,7 @@ describe("bulkUploads", () => {
         "content_guidance",
         row,
         updateFields,
-        cat_tag_map,
+        tagIdToTextMap,
         contentGuidanceMap
       );
       expect(row.length).toEqual(updateFields.content_guidance.size);
@@ -183,7 +183,7 @@ describe("bulkUploads", () => {
         "content_guidance",
         row,
         updateFields,
-        cat_tag_map,
+        tagIdToTextMap,
         contentGuidanceMap
       );
       expect(row.length).toEqual(updateFields.content_guidance.size);
@@ -195,12 +195,12 @@ describe("bulkUploads", () => {
         "content_guidance",
         row,
         updateFields,
-        cat_tag_map,
+        tagIdToTextMap,
         contentGuidanceMap
       );
 
       lessons[0].content_guidance?.forEach((id, i) => {
-        expect(row[i]).toBe(contentGuidanceMap.get(id));
+        expect(row[i]).toBe(contentGuidanceMap.get(id as number));
       });
 
       row = [];
@@ -209,11 +209,11 @@ describe("bulkUploads", () => {
         "tags",
         row,
         updateFields,
-        cat_tag_map,
+        tagIdToTextMap,
         contentGuidanceMap
       );
       lessons[2].tags?.forEach((id, i) => {
-        expect(row[i]).toBe(cat_tag_map.get(id));
+        expect(row[i]).toBe(tagIdToTextMap.get(id as number));
       });
     });
   });
@@ -271,7 +271,7 @@ describe("bulkUploads", () => {
       const tableRows = buildTableRows(
         lessons,
         updateFields,
-        cat_tag_map,
+        tagIdToTextMap,
         contentGuidanceMap
       );
 
