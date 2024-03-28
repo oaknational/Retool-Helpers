@@ -12,7 +12,7 @@ import type {
 } from "./lessonRecord";
 
 export type StringUpdateFields = {
-  max_length?: number;
+  maxLength?: number;
   type: "string";
   key: keyof StringFields;
 };
@@ -53,7 +53,7 @@ export type SingleKeyUpdateFields = {
   type: "array";
   size: number;
   primaryElementKey: SingleKeyArrayFieldPrimaryKey;
-  max_length: number;
+  maxLength: number;
 };
 
 export const isSingleKeyArrayField = (
@@ -77,8 +77,8 @@ export type JointKeyUpdateFields = {
   size: number;
   primaryElementKey: keyof Keyword | keyof MisconceptionsAndCommonMistake;
   secondaryElementKey: keyof Keyword | keyof MisconceptionsAndCommonMistake;
-  max_length_secondary: number;
-  max_length: number;
+  maxLengthSecondary: number;
+  maxLength: number;
 };
 
 export const isJointArrayField = (

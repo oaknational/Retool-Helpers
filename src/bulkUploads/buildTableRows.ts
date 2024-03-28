@@ -13,6 +13,23 @@ import {
   isStringField,
 } from "./types/bulkUpdateFields";
 
+/**
+ * Turns the array fields which contain an object with a single key, (i.e. teacher_tips, or key_learning_points), into a row of strings.
+ *
+ * @example
+ * ```
+ * // Given the following joint key array field:
+ * [{key_learning_point: "key learning one"}, {key_learning_point: "key learning two"}]
+ * // The row would look like this:
+ * ["key learning one", "key learning two"]
+ *
+ * ```
+ *
+ * @param record The lesson record to extract the data from
+ * @param key The key of the field to extract
+ * @param row The row to add the data to
+ * @param updateFields The store of metadata related to each field
+ */
 export const handleSingleKeyArrayField = (
   record: LessonRecord,
   key: keyof SingleKeyArrayFields,
@@ -44,6 +61,21 @@ export const handleSingleKeyArrayField = (
   }
 };
 
+/**
+ * Turns the array fields which contain an object with a two keys, (i.e. keywords, or misconceptions and common mistakes), into a row of strings where the secondary key follows the primary key.
+ *
+ * @example
+ * ```
+ * // Given the following joint key array field:
+ * [{keyword: "keyword1", description: "description1"}, {keyword: "keyword2", description: "description2"}]
+ * // The row would look like this:
+ * ["keyword1", "description1", "keyword2", "description2"]
+ * ```
+ * @param record The lesson record to extract the data from
+ * @param key The key of the field to extract
+ * @param row The row to add the data to
+ * @param updateFields The store of metadata related to each field
+ */
 export const handleJointKeyArrayField = (
   record: LessonRecord,
   key: keyof JointArrayFields,
@@ -84,6 +116,23 @@ export const handleJointKeyArrayField = (
   }
 };
 
+/**
+ * Turns the array fields which contains IDs (i.e tags or content guidance ) into the corresponding strings.
+ *
+ * @example
+ * ```
+ * // Given the following ID Array:
+ * [1,2]
+ * // The row would look like this:
+ * ["tag1", "tag2"]
+ * ```
+ * @param record The lesson record to extract the data from
+ * @param key The key of the field to extract
+ * @param row The row to add the data to
+ * @param updateFields The store of metadata related to each field
+ * @param cat_tags_map The map to convert the cat tag IDs to strings
+ * @param guidanceMap The map to convert the content guidance IDs to strings
+ */
 export const handleIdField = (
   record: LessonRecord,
   key: keyof IdArrayFields,
@@ -103,6 +152,12 @@ export const handleIdField = (
   }
 };
 
+/**
+ * Adds the header row to the table.
+ *
+ * @param values The table to add the header row to
+ * @param updateFields The store of metadata related to each field
+ */
 export const handleHeaderRow = (
   values: string[][],
   updateFields: UpdateFields
@@ -133,6 +188,16 @@ export const handleHeaderRow = (
 
   values.push(headers);
 };
+
+/**
+ * Builds the table rows for the bulk upload.
+ *
+ * @param data The lesson records to build the table from
+ * @param updateFields The store of metadata related to each field
+ * @param cat_tags_map The map to convert the cat tag IDs to strings
+ * @param guidanceMap The map to convert the content guidance IDs to strings
+ * @returns The table rows
+ */
 
 export const buildTableRows = (
   data: LessonRecord[],

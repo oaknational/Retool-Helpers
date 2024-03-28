@@ -1,2 +1,2 @@
-import { buildTableRows } from "./buildTableRows";
-export { buildTableRows };
+export { buildTableRows } from "./buildTableRows";
+export { parseUpdates } from "./parseUpdates";

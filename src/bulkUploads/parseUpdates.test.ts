@@ -11,6 +11,7 @@ import {
 } from "./fixtures/contentGuidanceMaps";
 import { type UpdateFields, isIdField } from "./types/bulkUpdateFields";
 import type { IdAndText, IdArrayFields } from "./types/lessonRecord";
+import { bulkUpdatesCopy } from "./fixtures/bulkUpdates copy";
 
 const conversionMaps = {
   guidanceMap: descriptionToId,
@@ -20,14 +21,14 @@ const conversionMaps = {
 };
 describe("parseUpdates", () => {
   test("should parse the updates (with no changes), the parsed update values should match the current values", () => {
-    const parsedUpdate = parseUpdates(
-      bulkUpdates,
+    const { parsedUpdates } = parseUpdates(
+      bulkUpdatesCopy,
       currentRecordsMap,
       updateFields,
       conversionMaps
     );
 
-    parsedUpdate.forEach((update) => {
+    parsedUpdates.forEach((update) => {
       const current = currentRecordsMap.get(update.lesson_uid!);
 
       Object.entries(update).forEach(([key, value]) => {
@@ -46,7 +47,7 @@ describe("parseUpdates", () => {
   });
 
   test("should parse the updates, when the field is  missing or empty, the parsed update values should match the current values", () => {
-    const parsedUpdate = parseUpdates(
+    const { parsedUpdates } = parseUpdates(
       bulkUpdates.map((update) => ({
         title: update.title,
         lesson_uid: update.lesson_uid,
@@ -61,7 +62,7 @@ describe("parseUpdates", () => {
       conversionMaps
     );
 
-    parsedUpdate.forEach((update) => {
+    parsedUpdates.forEach((update) => {
       const current = currentRecordsMap.get(update.lesson_uid!);
 
       Object.entries(update).forEach(([key, value]) => {
@@ -92,12 +93,14 @@ describe("parseUpdates", () => {
 
     three["keywords-2"] = "null";
 
-    const [parsedOne, parsedTwo, parsedThree] = parseUpdates(
+    const { parsedUpdates } = parseUpdates(
       customBulkUpdates,
       currentRecordsMap,
       updateFields,
       conversionMaps
     );
+
+    const [parsedOne, parsedTwo, parsedThree] = parsedUpdates;
 
     const parsedOneCurren = currentRecordsMap.get(parsedOne.lesson_uid!);
     const oneKlp = [...(parsedOneCurren?.key_learning_points ?? [])];
@@ -126,5 +129,218 @@ describe("parseUpdates", () => {
     threeK2.splice(1, 1);
 
     expect(parsedThree.keywords).toStrictEqual(threeK2);
+  });
+
+  describe("Errors", () => {
+    test("should log the error if a field is longer than its max length", () => {
+      const customBulkUpdates = [...bulkUpdates];
+      const [first] = customBulkUpdates;
+      const one = structuredClone(first);
+
+      one.title = "a".repeat(81);
+      one.pupil_lesson_outcome = "a".repeat(191);
+      one["key_learning_points-1"] = "a".repeat(121);
+      one["keywords-1-description"] = "a".repeat(201);
+      one["lesson_outline-1"] = "a".repeat(51);
+      one["teacher_tips-1"] = "a".repeat(301);
+      one["misconceptions_and_common_mistakes-1"] = "a".repeat(251);
+
+      const { errors } = parseUpdates(
+        [one],
+        currentRecordsMap,
+        updateFields,
+        conversionMaps
+      );
+
+      expect(errors).toEqual({
+        duplicateUids: new Set(),
+        tooLong: new Map([
+          ["title", { maxLength: 80, uuids: new Set([one.lesson_uid]) }],
+          [
+            "pupil_lesson_outcome",
+            { maxLength: 190, uuids: new Set([one.lesson_uid]) },
+          ],
+          [
+            "key_learning_points",
+            { maxLength: 120, uuids: new Set([one.lesson_uid]) },
+          ],
+          ["description", { maxLength: 200, uuids: new Set([one.lesson_uid]) }],
+          [
+            "lesson_outline",
+            { maxLength: 50, uuids: new Set([one.lesson_uid]) },
+          ],
+          [
+            "teacher_tips",
+            { maxLength: 300, uuids: new Set([one.lesson_uid]) },
+          ],
+          [
+            "misconceptions_and_common_mistakes",
+            { maxLength: 200, uuids: new Set([one.lesson_uid]) },
+          ],
+        ]),
+        incorrectGuidance: new Map(),
+        incorrectTags: new Map(),
+        nonAccessibleUids: new Set(),
+        missingTitle: new Set(),
+      });
+    });
+
+    test("should log the error if multiple records with the same uid are in the update", () => {
+      const { errors } = parseUpdates(
+        [bulkUpdates[0], bulkUpdates[0], bulkUpdates[2], bulkUpdates[2]],
+        currentRecordsMap,
+        updateFields,
+        conversionMaps
+      );
+
+      expect(errors).toEqual({
+        duplicateUids: new Set([
+          bulkUpdates[0].lesson_uid,
+          bulkUpdates[2].lesson_uid,
+        ]),
+        tooLong: new Map(),
+        incorrectGuidance: new Map(),
+        incorrectTags: new Map(),
+        nonAccessibleUids: new Set(),
+        missingTitle: new Set(),
+      });
+    });
+
+    test("should log the error if the lesson_uid is not in the current records", () => {
+      const { errors } = parseUpdates(
+        [
+          { ...bulkUpdates[0], lesson_uid: "not-a-uid" },
+          { ...bulkUpdates[1], lesson_uid: "not-a-uid" },
+        ],
+        currentRecordsMap,
+        updateFields,
+        conversionMaps
+      );
+
+      expect(errors).toEqual({
+        duplicateUids: new Set(),
+        tooLong: new Map(),
+        incorrectGuidance: new Map(),
+        incorrectTags: new Map(),
+        nonAccessibleUids: new Set(["not-a-uid"]),
+        missingTitle: new Set(),
+      });
+    });
+
+    test("should log the error if the title is missing", () => {
+      const { errors } = parseUpdates(
+        [
+          { ...bulkUpdates[0], title: "null" },
+          { ...bulkUpdates[1], title: "null" },
+        ],
+        currentRecordsMap,
+        updateFields,
+        conversionMaps
+      );
+
+      expect(errors).toEqual({
+        duplicateUids: new Set(),
+        tooLong: new Map(),
+        incorrectGuidance: new Map(),
+        incorrectTags: new Map(),
+        nonAccessibleUids: new Set(),
+        missingTitle: new Set([
+          bulkUpdates[0].lesson_uid,
+          bulkUpdates[1].lesson_uid,
+        ]),
+      });
+    });
+
+    test("should log the error if the tag is not in the tag map", () => {
+      const { errors } = parseUpdates(
+        [
+          { ...bulkUpdates[0], "tags-1": "not-a-tag" },
+          { ...bulkUpdates[1], "tags-1": "not-a-tag-two" },
+        ],
+        currentRecordsMap,
+        updateFields,
+        conversionMaps
+      );
+
+      expect(errors).toEqual({
+        duplicateUids: new Set(),
+        tooLong: new Map(),
+        incorrectGuidance: new Map(),
+        incorrectTags: new Map([
+          [bulkUpdates[0].lesson_uid, new Set(["not-a-tag"])],
+          [bulkUpdates[1].lesson_uid, new Set(["not-a-tag-two"])],
+        ]),
+        nonAccessibleUids: new Set(),
+        missingTitle: new Set(),
+      });
+    });
+
+    test("should log the error if the guidance is not in the guidance map", () => {
+      const { errors } = parseUpdates(
+        [
+          { ...bulkUpdates[0], "content_guidance-1": "not-a-guidance" },
+          { ...bulkUpdates[1], "content_guidance-1": "not-a-guidance-two" },
+        ],
+        currentRecordsMap,
+        updateFields,
+        conversionMaps
+      );
+
+      expect(errors).toEqual({
+        duplicateUids: new Set(),
+        tooLong: new Map(),
+        incorrectGuidance: new Map([
+          [bulkUpdates[0].lesson_uid, new Set(["not-a-guidance"])],
+          [bulkUpdates[1].lesson_uid, new Set(["not-a-guidance-two"])],
+        ]),
+        incorrectTags: new Map(),
+        nonAccessibleUids: new Set(),
+        missingTitle: new Set(),
+      });
+    });
+
+    test("should log all errors if they are present", () => {
+      const customBulkUpdates = [...bulkUpdates];
+      const [first, second, third] = customBulkUpdates;
+      const one = structuredClone(first);
+      const two = structuredClone(second);
+      const three = structuredClone(third);
+
+      one.pupil_lesson_outcome = "a".repeat(191);
+      one["teacher_tips-1"] = "a".repeat(301);
+      one["tags-1"] = "not-a-tag";
+      one["content_guidance-1"] = "not-a-guidance";
+
+      two.lesson_uid = "not-a-uid";
+
+      three.title = "null";
+
+      const { errors } = parseUpdates(
+        [one, one, two, three],
+        currentRecordsMap,
+        updateFields,
+        conversionMaps
+      );
+
+      expect(errors).toEqual({
+        duplicateUids: new Set([one.lesson_uid]),
+        tooLong: new Map([
+          [
+            "pupil_lesson_outcome",
+            { maxLength: 190, uuids: new Set([one.lesson_uid]) },
+          ],
+          [
+            "teacher_tips",
+            { maxLength: 300, uuids: new Set([one.lesson_uid]) },
+          ],
+        ]),
+        incorrectGuidance: new Map([
+          [one.lesson_uid, new Set(["not-a-guidance"])],
+        ]),
+        incorrectTags: new Map([[one.lesson_uid, new Set(["not-a-tag"])]]),
+        nonAccessibleUids: new Set([two.lesson_uid]),
+        missingTitle: new Set([three.lesson_uid]),
+      });
+    });
   });
 });

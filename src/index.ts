@@ -8,13 +8,14 @@ import {
   insertSpecialCharacters,
 } from "./handleSpecialCharacters/index";
 
-import { buildTableRows } from "./bulkUploads/index";
+import { buildTableRows, parseUpdates } from "./bulkUploads/index";
 
 export {
   slugify,
   removeSpecialCharacters,
   insertSpecialCharacters,
   buildTableRows,
+  parseUpdates,
 };
 
 // When bundled for the browser, this object
@@ -25,6 +26,7 @@ const oakRetoolHelpers = {
   removeSpecialCharacters,
   insertSpecialCharacters,
   buildTableRows,
+  parseUpdates,
 };
 
 declare global {

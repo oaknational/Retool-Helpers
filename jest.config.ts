@@ -5,10 +5,7 @@ const jestConfig: JestConfigWithTsJest = {
   collectCoverageFrom: ["./src/**"],
   coveragePathIgnorePatterns: ["/node_modules/"],
   testEnvironment: "node",
-  testMatch: [
-    "**/__tests__/**/*.?(m)[jt]s?(x)",
-    "**/?(*.)+(spec|test).?(m)[tj]s?(x)",
-  ],
+  testMatch: ["**/__tests__/**/*.ts", "**/?(*.)+(spec|test).ts"],
   preset: "ts-jest/presets/default-esm",
   moduleFileExtensions: [
     "js",
