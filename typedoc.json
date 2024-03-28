@@ -1,0 +1,6 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "out": "docs",
+  "tsconfig": "configs/tsconfig.cjs.json",
+  "plugin": ["typedoc-plugin-missing-exports"]
+}
