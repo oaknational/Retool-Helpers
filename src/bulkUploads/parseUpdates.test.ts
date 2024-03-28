@@ -11,7 +11,6 @@ import {
 } from "./fixtures/contentGuidanceMaps";
 import { type UpdateFields, isIdField } from "./types/bulkUpdateFields";
 import type { IdAndText, IdArrayFields } from "./types/lessonRecord";
-import { bulkUpdatesCopy } from "./fixtures/bulkUpdates copy";
 
 const conversionMaps = {
   guidanceMap: descriptionToId,
@@ -22,7 +21,7 @@ const conversionMaps = {
 describe("parseUpdates", () => {
   test("should parse the updates (with no changes), the parsed update values should match the current values", () => {
     const { parsedUpdates } = parseUpdates(
-      bulkUpdatesCopy,
+      bulkUpdates,
       currentRecordsMap,
       updateFields,
       conversionMaps
