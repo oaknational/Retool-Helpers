@@ -8,7 +8,15 @@ import {
   insertSpecialCharacters,
 } from "./handleSpecialCharacters/index";
 
-export { slugify, removeSpecialCharacters, insertSpecialCharacters };
+import { buildTableRows, parseUpdates } from "./bulkUploads/index";
+
+export {
+  slugify,
+  removeSpecialCharacters,
+  insertSpecialCharacters,
+  buildTableRows,
+  parseUpdates,
+};
 
 // When bundled for the browser, this object
 // will be exposed on the Window object as
@@ -17,9 +25,12 @@ const oakRetoolHelpers = {
   slugify,
   removeSpecialCharacters,
   insertSpecialCharacters,
+  buildTableRows,
+  parseUpdates,
 };
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
   interface Window {
     OakRetoolHelpers: typeof oakRetoolHelpers;
   }

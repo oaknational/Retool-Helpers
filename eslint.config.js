@@ -27,9 +27,18 @@ export default tseslint.config({
   },
 
   files: ["src/**/*.ts"],
-  extends: [eslint.configs.recommended, ...tseslint.configs.strictTypeChecked],
+  extends: [
+    eslint.configs.recommended,
+    ...tseslint.configs.strictTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
   rules: {
     "@typescript-eslint/array-type": "error",
     "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/restrict-template-expressions": [
+      "error",
+      { allowNumber: true },
+    ],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
   },
 });
