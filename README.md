@@ -31,6 +31,10 @@ New GitHub releases are automatically created with the [Semantic Release](https:
 
 The bundled code can be included on a page as a `<script>` tag. Once loaded the functions will be available on the `OakRetoolHelpers` object attached to the global `Window` scope, e.g. `OakRetoolHelpers.slugify(myString)`. See the [browser test file](browser_test/index.html) for an example.
 
+## Documentation
+
+Documentation can be read locally by using the command `npm run open-docs`
+
 ## Contributions
 
 We are not currently accepting external contributions, thank you.
