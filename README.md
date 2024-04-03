@@ -27,13 +27,13 @@ The Typescript is compiled into ESM and CJS compatible modules. The ESM modules 
 
 New GitHub releases are automatically created with the [Semantic Release](https://www.npmjs.com/package/semantic-release) package on merging a PR, and automatically released to [npmjs.com](https://www.npmjs.com/package/@oaknational/retool-helpers).
 
-## Use
-
-The bundled code can be included on a page as a `<script>` tag. Once loaded the functions will be available on the `OakRetoolHelpers` object attached to the global `Window` scope, e.g. `OakRetoolHelpers.slugify(myString)`. See the [browser test file](browser_test/index.html) for an example.
-
 ## Documentation
 
 Documentation can be read locally by using the command `npm run open-docs`
+
+## Use
+
+The bundled code can be included on a page as a `<script>` tag. Once loaded the functions will be available on the `OakRetoolHelpers` object attached to the global `Window` scope, e.g. `OakRetoolHelpers.slugify(myString)`. See the [browser test file](browser_test/index.html) for an example.
 
 ## Contributions
 
