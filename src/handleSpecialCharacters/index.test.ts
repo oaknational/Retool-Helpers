@@ -22,7 +22,7 @@ describe("handleSpecialCharacters", () => {
             String.fromCharCode(9) +
             "tab"
         )
-      ).toBe(`\ttab\ttab\ttab`);
+      ).toBe(`\\\\ttab\\\\ttab\\\\ttab`);
     });
     test("removeSpecialCharacters - line feed all characters", () => {
       expect(
@@ -34,7 +34,7 @@ describe("handleSpecialCharacters", () => {
             String.fromCharCode(10) +
             "feed"
         )
-      ).toBe(`\ncheck\nthe\nfeed`);
+      ).toBe(`\\\\ncheck\\\\nthe\\\\nfeed`);
     });
     test("removeSpecialCharacters - carriage return all characters", () => {
       expect(
@@ -46,7 +46,7 @@ describe("handleSpecialCharacters", () => {
             String.fromCharCode(13) +
             "now"
         )
-      ).toBe(`\rreturn\rcheck\rnow`);
+      ).toBe(`\\\\rreturn\\\\rcheck\\\\rnow`);
     });
     test("removeSpecialCharacters - backslash all characters", () => {
       expect(
@@ -73,7 +73,7 @@ describe("handleSpecialCharacters", () => {
       );
     });
     test("insertSpecialCharacters - tab all characters", () => {
-      expect(insertSpecialCharacters(`\ttab\ttab\ttab`)).toBe(
+      expect(insertSpecialCharacters(`\\ttab\\ttab\\ttab`)).toBe(
         String.fromCharCode(9) +
           "tab" +
           String.fromCharCode(9) +
@@ -83,7 +83,7 @@ describe("handleSpecialCharacters", () => {
       );
     });
     test("insertSpecialCharacters - line feed all characters", () => {
-      expect(insertSpecialCharacters(`\ncheck\nthe\nfeed`)).toBe(
+      expect(insertSpecialCharacters(`\\ncheck\\nthe\\nfeed`)).toBe(
         String.fromCharCode(10) +
           "check" +
           String.fromCharCode(10) +
@@ -93,7 +93,7 @@ describe("handleSpecialCharacters", () => {
       );
     });
     test("insertSpecialCharacters - carriage return all characters", () => {
-      expect(insertSpecialCharacters(`\rreturn\rcheck\rnow`)).toBe(
+      expect(insertSpecialCharacters(`\\rreturn\\rcheck\\rnow`)).toBe(
         String.fromCharCode(13) +
           "return" +
           String.fromCharCode(13) +
