@@ -251,6 +251,7 @@ export const parseUpdates = (
         lesson_uid: update.lesson_uid,
         title: currentRecord.title,
         pupil_lesson_outcome: currentRecord.pupil_lesson_outcome,
+        lesson_id: currentRecord.lesson_id,
       };
 
       let key: keyof UpdateFields;

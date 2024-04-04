@@ -130,6 +130,21 @@ describe("parseUpdates", () => {
     expect(parsedThree.keywords).toStrictEqual(threeK2);
   });
 
+  test("should include the lesson ID in the parsed updates", () => {
+    const { parsedUpdates } = parseUpdates(
+      bulkUpdates,
+      currentRecordsMap,
+      updateFields,
+      conversionMaps
+    );
+
+    parsedUpdates.forEach((update) => {
+      const current = currentRecordsMap.get(update.lesson_uid!);
+
+      expect(update.lesson_id).toEqual(current?.lesson_id);
+    });
+  });
+
   describe("Errors", () => {
     test("should log the error if a field is longer than its max length", () => {
       const customBulkUpdates = [...bulkUpdates];
