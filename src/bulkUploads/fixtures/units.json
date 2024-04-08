@@ -1,0 +1,762 @@
+[
+  {
+    "unit_id": 159,
+    "unit_uid": "UNIT-YVOPI-QJ159",
+    "title": "Myths and legends re-told: poetry and short stories",
+    "description": "",
+    "slug": "myths-and-legends-re-told-poetry-and-short-stories",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 28,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [
+      1465, 1466, 1484, 1474, 1477, 1476, 1480, 1498, 1499, 1483
+    ],
+    "prior_knowledge_requirements": [
+      "Pupils can write a narrative in either the first or third person",
+      "Pupils recognise the key features of a poem and can comment on stanzas, rhythm and rhyme",
+      "Pupils understand what is meant by symbolism within a text",
+      "Pupils can write in simple, compound and complex sentences",
+      "Pupils can use a range of language devices including metaphors, similes, personifications and onomatopoeia"
+    ],
+    "prior_unit_link": 72,
+    "prior_unit_description": "In 'Step Into the Unknown', pupils look at the ways in which famous children's writers create convincing settings, particularly through descriptions of windows and doors. In 'Myths and Legends Re-Told', pupils take inspiration from the ways in which writers and poets use powerful imagery and symbolism, to inspire their own writing. ",
+    "future_unit_link": 150,
+    "future_unit_description": "In 'Myths and Legends Re-Told', pupils explore how they can alter traditional stories to convey modern ideas and morals. In 'Animal Farm: the Pigs and Power', pupils learn about Orwell's allegory and understand how he uses an apparently simple fairy story to convey a political message. ",
+    "connection_prior_unit": {
+      "title": "Step into the unknown: fiction reading and creative writing",
+      "unit_uid": "UNIT-BCXRR-OND72",
+      "unit_id": 72
+    },
+    "connection_future_unit": {
+      "title": "Modern text: first study",
+      "unit_uid": "UNIT-BOBJF-PP150",
+      "unit_id": 150
+    },
+    "tags": null,
+    "unit_programmes": [
+      {
+        "order": 1,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 161,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 28
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 161,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 28
+          }
+        }
+      }
+    ]
+  },
+  {
+    "unit_id": 160,
+    "unit_uid": "UNIT-MCMUF-LC160",
+    "title": "'A Midsummer Night's Dream'",
+    "description": "",
+    "slug": "a-midsummer-nights-dream",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 28,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [1469, 1474, 1475, 1476, 1479],
+    "prior_knowledge_requirements": [
+      "Pupils know who Shakespeare was and when he was writing",
+      "Pupils understand the performative aspect of plays and recognise the conventions of playscripts",
+      "Pupils can select quotations to support a point",
+      "Pupils can apply context to explain the writer's viewpoint or attitude",
+      "Pupils can make logical inferences and explain them",
+      "Pupils can comment on the effect of language or structural features"
+    ],
+    "prior_unit_link": 162,
+    "prior_unit_description": "In 'The Tempest', pupils explore the ways in which Ariel and Caliban, as 'outsiders', might be perceived by modern and contemporary audiences. In 'A Midsummer Night's Dream', pupils use context to develop their understanding of marriage rituals and attitudes to magic in the play. ",
+    "future_unit_link": 151,
+    "future_unit_description": "In 'A Midsummer Night's Dream', pupils learn about marriage conventions within Shakespeare's patriarchal society. In 'Macbeth: Lady Macbeth as a Machiavellian Villain', pupils explore the ways in which this female character subverts the expectations of women in her day and question whether modern and contemporary audiences are likely to sympathise with her. ",
+    "connection_prior_unit": {
+      "title": "'The Tempest'",
+      "unit_uid": "UNIT-YMBKZ-OI162",
+      "unit_id": 162
+    },
+    "connection_future_unit": {
+      "title": "Macbeth: Lady Macbeth as a machiavellian villain",
+      "unit_uid": "UNIT-UKTPL-UV151",
+      "unit_id": 151
+    },
+    "tags": null,
+    "unit_programmes": [
+      {
+        "order": 2,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 162,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 28
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 162,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 28
+          }
+        }
+      }
+    ]
+  },
+  {
+    "unit_id": 145,
+    "unit_uid": "UNIT-GMTLD-JN145",
+    "title": "Taking a stand",
+    "description": "",
+    "slug": "taking-a-stand",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 14,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [1477, 1466, 1476, 1506, 1492, 1497, 1502],
+    "prior_knowledge_requirements": [
+      "Pupils are able to articulate a point of view and justify their position, with clear reasons",
+      "Pupils are able to use causal conjunctions such as 'because', to explain their reasoning ",
+      "Pupils can recognise basic features of a poem such as stanzas, rhythm and rhyme ",
+      "Pupils understand the fact that authors can use their writing to express a personal or political viewpoint",
+      "Pupils are able to organise their writing into paragraphs, with a focus for each one",
+      "Pupils are able to recognise the differences between a speech and newspaper article, naming some of their conventions"
+    ],
+    "prior_unit_link": 159,
+    "prior_unit_description": "In 'Myths and Legends Re-Told', students consider how writers have modernised ancient stories in order to make them more reflective of modern values. In 'Writing with passion', students look at the ways in which they can use their own writing, inspired by key poets and speech writers, to take a political or moral stand.",
+    "future_unit_link": 161,
+    "future_unit_description": "In 'Writing with passion', students use protest poetry and speeches as inspiration for their own protest writing. In 'Single Poet Study: Maya Angelou', students look in depth at the writing of a poet who is synonymous with writing as protest; in particular at the ways in which she used her poetry to voice support for the Civil Rights Movement. ",
+    "connection_prior_unit": {
+      "title": "Myths and legends re-told: poetry and short stories",
+      "unit_uid": "UNIT-YVOPI-QJ159",
+      "unit_id": 159
+    },
+    "connection_future_unit": {
+      "title": "Single poet study: Maya Angelou",
+      "unit_uid": "UNIT-LKURJ-EJ161",
+      "unit_id": 161
+    },
+    "tags": [13, 14],
+    "unit_programmes": [
+      {
+        "order": 3,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 147,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 14
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 147,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 14
+          }
+        }
+      }
+    ]
+  },
+  {
+    "unit_id": 161,
+    "unit_uid": "UNIT-LKURJ-EJ161",
+    "title": "Single poet study: Maya Angelou",
+    "description": "",
+    "slug": "single-poet-study-maya-angelou",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 20,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [1481, 1475, 1474, 1477, 1486],
+    "prior_knowledge_requirements": [
+      "Pupils know the key conventions of poetry including stanza, rhythm and rhyme",
+      "Pupils are able to make inferences and explain these logically",
+      "Pupils are able to select relevant textual evidence or quotations, to support their points",
+      "Pupils are able to comment on specific language features within a text and comment on their effect",
+      "Pupils understand what is meant by the terms 'racism' and 'prejudice'"
+    ],
+    "prior_unit_link": 163,
+    "prior_unit_description": "In 'Poetry about Place and Home', pupils use spoken word poetry to explore their relationship to the city that they live in. In 'Single Poet Study: Maya Angelou', pupils explore how spoken word poetry can be used to express personal and political views. ",
+    "future_unit_link": 170,
+    "future_unit_description": "In 'Single Poet Study: Maya Angelou', pupils study a body of work by a single poet, in order to explore what makes her style and voice unique, giving Angelou her identity as a writer. In the second  Power and Conflict Poetry unit, pupils study the identity cluster of poems, including works by Agard, Dharker and Rumens, all of which use poetic voice to explore questions about personal identity.",
+    "connection_prior_unit": {
+      "title": "Poetry about place and home",
+      "unit_uid": "UNIT-WLRDO-MV163",
+      "unit_id": 163
+    },
+    "connection_future_unit": {
+      "title": "Poetry anthology: continued study",
+      "unit_uid": "UNIT-FVNPK-YM170",
+      "unit_id": 170
+    },
+    "tags": null,
+    "unit_programmes": [
+      {
+        "order": 4,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 163,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 20
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 163,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 20
+          }
+        }
+      }
+    ]
+  },
+  {
+    "unit_id": 146,
+    "unit_uid": "UNIT-JLCDK-II146",
+    "title": "Victorian childhood: non-fiction reading and writing",
+    "description": "",
+    "slug": "victorian-childhood-non-fiction-reading-and-writing",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 7,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [
+      1462, 1474, 1473, 1480, 1475, 1492, 1509, 1512, 1495, 1496
+    ],
+    "prior_knowledge_requirements": [
+      "Pupils are able to use the four reading skills to decode a text",
+      "Pupils know the difference between spoken and written language",
+      "Pupils understand that texts are crafted for specific audiences",
+      "Pupils can present an argument using clear topic sentences",
+      "Pupils understand that interpretations of texts change, depending on its historical context",
+      "Pupils are aware of some of the differences between Victorian context and modern day"
+    ],
+    "prior_unit_link": 164,
+    "prior_unit_description": "In 'Sherlock Holmes', pupils were introduced to the Victorian context. In 'Victorian Childhood', pupils use non-fiction texts to develop their understanding of the era in more detail.",
+    "future_unit_link": 155,
+    "future_unit_description": "In 'Victorian childhood', pupils develop their spoken language skills through delivering a speech. In 'Perspectives on Gender', pupils build on these skills by writing persuasive speeches and taking part in debates.",
+    "connection_prior_unit": {
+      "title": "Sherlock Holmes: short stories",
+      "unit_uid": "UNIT-DFJXN-QD164",
+      "unit_id": 164
+    },
+    "connection_future_unit": {
+      "title": "Women's rights across the ages: non-fiction reading and writing",
+      "unit_uid": "UNIT-YBNKV-IY155",
+      "unit_id": 155
+    },
+    "tags": [13],
+    "unit_programmes": [
+      {
+        "order": 5,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 148,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 7
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 148,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 7
+          }
+        }
+      }
+    ]
+  },
+  {
+    "unit_id": 147,
+    "unit_uid": "UNIT-IAUPZ-HW147",
+    "title": "A monster within: reading and writing Gothic fiction",
+    "description": "",
+    "slug": "a-monster-within-reading-gothic-fiction",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 32,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [1463, 1474, 1476, 1475, 1480, 1507, 1478],
+    "prior_knowledge_requirements": [
+      "Pupils can use the four reading skills for decoding challenging texts",
+      "Pupils can use simple, compound and complex sentences",
+      "Pupils recognise the features of different forms of functional writing",
+      "Pupils can use topic sentences",
+      "Pupils can select evidence from texts to justify their arguments",
+      "Pupils can make inferences",
+      "Pupils can recognise a range of language devices in a text",
+      "Pupils can comment on the language choices of an author"
+    ],
+    "prior_unit_link": 165,
+    "prior_unit_description": "In 'The Twisted Tree', pupils are introduced to the Gothic genre. In 'A Monster Within', pupils explore Gothic motifs in a range of more challenging texts.",
+    "future_unit_link": 148,
+    "future_unit_description": "In 'A Monster Within', pupils explore extracts from Gothic fiction. In 'Gothic Poetry', pupils apply this learning to the poetry of Edgar Allan Poe.",
+    "connection_prior_unit": {
+      "title": "'The Twisted Tree': fiction reading",
+      "unit_uid": "UNIT-QCSFY-CO165",
+      "unit_id": 165
+    },
+    "connection_future_unit": {
+      "title": "Gothic poetry",
+      "unit_uid": "UNIT-AUFRH-WM148",
+      "unit_id": 148
+    },
+    "tags": [13],
+    "unit_programmes": [
+      {
+        "order": 6,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 149,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 32
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 149,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 32
+          }
+        }
+      }
+    ]
+  },
+  {
+    "unit_id": 148,
+    "unit_uid": "UNIT-AUFRH-WM148",
+    "title": "Gothic poetry",
+    "description": "",
+    "slug": "gothic-poetry",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 6,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [1486, 1465, 1519, 1475],
+    "prior_knowledge_requirements": [
+      "Pupils understand the term 'Gothic' in a literary context and can recognise key gothic conventions",
+      "Pupils recognise key features of a poem and can comment on stanza length, rhythm and rhyme",
+      "Pupils can make inferences independently and offer clear reasons for them",
+      "Pupils can use literary devices in their writing, including symbolism"
+    ],
+    "prior_unit_link": 147,
+    "prior_unit_description": "In 'A Monster Within', pupils explore the role of gothic monsters in several prose extracts. In 'Gothic Poetry', pupils focus on the work of Edgar Allen Poe to explore how gothic conventions can be used in poetry. ",
+    "future_unit_link": 144,
+    "future_unit_description": "In 'Gothic Poetry', pupils take inspiration from Edgar Allen Poe to write their own gothic poems, developing their understanding of genre and poetic devices. In 'A World at War: Poetry', pupils need to write their own poems in the style of different poets throughout the unit, deepening their understanding of poetic voice and style. ",
+    "connection_prior_unit": {
+      "title": "A monster within: reading and writing Gothic fiction",
+      "unit_uid": "UNIT-IAUPZ-HW147",
+      "unit_id": 147
+    },
+    "connection_future_unit": {
+      "title": "A world at war: poetry",
+      "unit_uid": "UNIT-CWDHR-PW144",
+      "unit_id": 144
+    },
+    "tags": [13],
+    "unit_programmes": [
+      {
+        "order": 7,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 150,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 6
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 150,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 6
+          }
+        }
+      }
+    ]
+  },
+  {
+    "unit_id": 149,
+    "unit_uid": "UNIT-TCTRB-MT149",
+    "title": "A history of language",
+    "description": "",
+    "slug": "a-history-of-language",
+    "adaptable": null,
+    "notes": "",
+    "intro_video_id": null,
+    "cross_subject_links": null,
+    "why_this_why_now": null,
+    "planned_number_of_lessons": 8,
+    "exam_board_specification_content": null,
+    "national_curriculum_content": [1503, 1473, 1500],
+    "prior_knowledge_requirements": [
+      "Pupils understand that words can share a root",
+      "Pupils can identify prefixes and suffixes, using them to modify words",
+      "Pupils can use a dictionary effectively",
+      "Pupils can use some persuasive techniques verbally or in writing"
+    ],
+    "prior_unit_link": 164,
+    "prior_unit_description": "In 'Sherlock Holmes: Short Stories', students practise argumentative speaking as part of role-playing a court case. In 'A History of Language',  students also argue to justify the addition of their new word to the dictionary.   ",
+    "future_unit_link": 155,
+    "future_unit_description": "In 'A History of Language' students gain an understanding of the way in which English has evolved over time. In 'Perspectives on Gender', students also consider how language has been shaped by historical and social factors.",
+    "connection_prior_unit": {
+      "title": "Sherlock Holmes: short stories",
+      "unit_uid": "UNIT-DFJXN-QD164",
+      "unit_id": 164
+    },
+    "connection_future_unit": {
+      "title": "Women's rights across the ages: non-fiction reading and writing",
+      "unit_uid": "UNIT-YBNKV-IY155",
+      "unit_id": 155
+    },
+    "tags": null,
+    "unit_programmes": [
+      {
+        "order": 8,
+        "unit_overrides": {},
+        "programme": {
+          "programme_fields": {
+            "year": "8",
+            "phase": "secondary",
+            "subject": "English",
+            "year_id": 8,
+            "keystage": "KS3",
+            "phase_id": 3,
+            "year_slug": "year-8",
+            "phase_slug": "secondary",
+            "subject_id": 1,
+            "keystage_id": 3,
+            "subject_slug": "english",
+            "keystage_slug": "ks3",
+            "year_description": "Year 8",
+            "phase_description": "Secondary",
+            "year_display_order": 9,
+            "phase_display_order": 3,
+            "subject_description": "",
+            "keystage_description": "Key Stage 3",
+            "subject_display_order": 11,
+            "keystage_display_order": 4
+          }
+        }
+      }
+    ],
+    "programmes_unit_is_in_count": {
+      "aggregate": {
+        "count": 1
+      }
+    },
+    "default_unit_variant": [
+      {
+        "unitvariant_id": 151,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 8
+          }
+        }
+      }
+    ],
+    "all_unit_variants": [
+      {
+        "unitvariant_id": 151,
+        "unit_overrides": {},
+        "lesson_count": {
+          "aggregate": {
+            "count": 8
+          }
+        }
+      }
+    ]
+  }
+]
