@@ -1,4 +1,4 @@
-import type { UpdateFields } from "./types/bulkUpdateFields";
+import type { LessonUpdateFields } from "./types/bulkUpdateFields";
 import type {
   SingleKeyArrayFields,
   IdArrayFields,
@@ -34,7 +34,7 @@ export const handleSingleKeyArrayField = (
   record: LessonRecord,
   key: keyof SingleKeyArrayFields,
   row: string[],
-  updateFields: UpdateFields
+  updateFields: LessonUpdateFields
 ) => {
   for (let i = 0; i < updateFields[key].size; i++) {
     const value = (record[key] ?? [])[i] ?? {};
@@ -80,7 +80,7 @@ export const handleJointKeyArrayField = (
   record: LessonRecord,
   key: keyof JointArrayFields,
   row: string[],
-  updateFields: UpdateFields
+  updateFields: LessonUpdateFields
 ) => {
   for (let i = 0; i < updateFields[key].size; i++) {
     const value = (record[key] ?? [])[i] ?? {};
@@ -137,7 +137,7 @@ export const handleIdField = (
   record: LessonRecord,
   key: keyof IdArrayFields,
   row: string[],
-  updateFields: UpdateFields,
+  updateFields: LessonUpdateFields,
   cat_tags_map: Map<number, string>,
   guidanceMap: Map<number, string>
 ) => {
@@ -160,10 +160,10 @@ export const handleIdField = (
  */
 export const handleHeaderRow = (
   values: string[][],
-  updateFields: UpdateFields
+  updateFields: LessonUpdateFields
 ) => {
   const headers: string[] = [];
-  const keys = Object.keys(updateFields) as (keyof UpdateFields)[];
+  const keys = Object.keys(updateFields) as (keyof LessonUpdateFields)[];
 
   keys.forEach((key) => {
     if (isStringField(key)) {
@@ -201,7 +201,7 @@ export const handleHeaderRow = (
 
 export const buildTableRows = (
   data: LessonRecord[],
-  updateFields: UpdateFields,
+  updateFields: LessonUpdateFields,
   cat_tags_map: Map<number, string>,
   guidanceMap: Map<number, string>
 ): string[][] => {
@@ -210,7 +210,7 @@ export const buildTableRows = (
       handleHeaderRow(values, updateFields);
     }
     const row: string[] = [];
-    let field: keyof UpdateFields;
+    let field: keyof LessonUpdateFields;
     for (field in updateFields) {
       if (isStringField(field)) {
         row.push(record[field]);

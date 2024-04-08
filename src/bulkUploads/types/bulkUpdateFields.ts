@@ -18,7 +18,7 @@ export type StringUpdateFields = {
 };
 
 export const isStringField = (
-  field: keyof UpdateFields
+  field: keyof LessonUpdateFields
 ): field is keyof StringFields => {
   return [
     "unit_uid",
@@ -37,7 +37,7 @@ export type IdArrayUpdateFields = {
 };
 
 export const isIdField = (
-  field: keyof UpdateFields
+  field: keyof LessonUpdateFields
 ): field is keyof IdArrayFields => {
   return ["content_guidance", "tags"].includes(field);
 };
@@ -57,7 +57,7 @@ export type SingleKeyUpdateFields = {
 };
 
 export const isSingleKeyArrayField = (
-  field: keyof UpdateFields
+  field: keyof LessonUpdateFields
 ): field is keyof SingleKeyArrayFields => {
   return [
     "key_learning_points",
@@ -82,12 +82,12 @@ export type JointKeyUpdateFields = {
 };
 
 export const isJointArrayField = (
-  field: keyof UpdateFields
+  field: keyof LessonUpdateFields
 ): field is keyof JointArrayFields => {
   return ["misconceptions_and_common_mistakes", "keywords"].includes(field);
 };
 
-export type UpdateFields = {
+export type LessonUpdateFields = {
   [key in keyof StringFields]: StringUpdateFields;
 } & {
   [key in keyof SingleKeyArrayFields]: SingleKeyUpdateFields;

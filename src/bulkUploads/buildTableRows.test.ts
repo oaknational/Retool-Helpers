@@ -9,7 +9,7 @@ import {
   handleHeaderRow,
   buildTableRows,
 } from "./buildTableRows";
-import { updateFields } from "./fixtures/updateFields";
+import { lessonUpdateFields } from "./fixtures/updateFields";
 import { contentGuidanceMap } from "./fixtures/contentGuidanceMaps";
 import { tagIdToTextMap } from "./fixtures/catTagMaps";
 
@@ -29,36 +29,36 @@ describe("bulkUploads", () => {
         lessons[0],
         "key_learning_points",
         row,
-        updateFields
+        lessonUpdateFields
       );
-      expect(row.length).toEqual(updateFields.key_learning_points.size);
+      expect(row.length).toEqual(lessonUpdateFields.key_learning_points.size);
 
       row = [];
       handleSingleKeyArrayField(
         lessons[1],
         "key_learning_points",
         row,
-        updateFields
+        lessonUpdateFields
       );
-      expect(row.length).toEqual(updateFields.key_learning_points.size);
+      expect(row.length).toEqual(lessonUpdateFields.key_learning_points.size);
 
       row = [];
       handleSingleKeyArrayField(
         lessons[0],
         "lesson_outline",
         row,
-        updateFields
+        lessonUpdateFields
       );
-      expect(row.length).toEqual(updateFields.lesson_outline.size);
+      expect(row.length).toEqual(lessonUpdateFields.lesson_outline.size);
 
       row = [];
       handleSingleKeyArrayField(
         lessons[2],
         "lesson_outline",
         row,
-        updateFields
+        lessonUpdateFields
       );
-      expect(row.length).toEqual(updateFields.lesson_outline.size);
+      expect(row.length).toEqual(lessonUpdateFields.lesson_outline.size);
     });
 
     test("should return an array with values equal to the equivalent key in the lesson record", () => {
@@ -66,7 +66,7 @@ describe("bulkUploads", () => {
         lessons[0],
         "equipment_and_resources",
         row,
-        updateFields
+        lessonUpdateFields
       );
 
       lessons[0].equipment_and_resources?.forEach(({ equipment }, i) => {
@@ -78,7 +78,7 @@ describe("bulkUploads", () => {
         lessons[2],
         "key_learning_points",
         row,
-        updateFields
+        lessonUpdateFields
       );
       lessons[2].key_learning_points?.forEach(({ key_learning_point }, i) => {
         expect(row[i]).toBe(key_learning_point);
@@ -88,22 +88,22 @@ describe("bulkUploads", () => {
 
   describe("handleJointKeyArrayField", () => {
     test("should return an array with a length equal to the size of the updateField", () => {
-      handleJointKeyArrayField(lessons[0], "keywords", row, updateFields);
-      expect(row.length).toEqual(updateFields.keywords.size * 2);
+      handleJointKeyArrayField(lessons[0], "keywords", row, lessonUpdateFields);
+      expect(row.length).toEqual(lessonUpdateFields.keywords.size * 2);
 
       row = [];
-      handleJointKeyArrayField(lessons[1], "keywords", row, updateFields);
-      expect(row.length).toEqual(updateFields.keywords.size * 2);
+      handleJointKeyArrayField(lessons[1], "keywords", row, lessonUpdateFields);
+      expect(row.length).toEqual(lessonUpdateFields.keywords.size * 2);
 
       row = [];
       handleJointKeyArrayField(
         lessons[0],
         "misconceptions_and_common_mistakes",
         row,
-        updateFields
+        lessonUpdateFields
       );
       expect(row.length).toEqual(
-        updateFields.misconceptions_and_common_mistakes.size * 2
+        lessonUpdateFields.misconceptions_and_common_mistakes.size * 2
       );
 
       row = [];
@@ -111,15 +111,15 @@ describe("bulkUploads", () => {
         lessons[2],
         "misconceptions_and_common_mistakes",
         row,
-        updateFields
+        lessonUpdateFields
       );
       expect(row.length).toEqual(
-        updateFields.misconceptions_and_common_mistakes.size * 2
+        lessonUpdateFields.misconceptions_and_common_mistakes.size * 2
       );
     });
 
     test("should return an array with values equal to the equivalent key in the lesson record", () => {
-      handleJointKeyArrayField(lessons[0], "keywords", row, updateFields);
+      handleJointKeyArrayField(lessons[0], "keywords", row, lessonUpdateFields);
       lessons[0].keywords?.forEach(({ keyword, description }, i) => {
         const index = i * 2;
         expect(row[index]).toBe(keyword);
@@ -131,7 +131,7 @@ describe("bulkUploads", () => {
         lessons[2],
         "misconceptions_and_common_mistakes",
         row,
-        updateFields
+        lessonUpdateFields
       );
       lessons[2].misconceptions_and_common_mistakes?.forEach(
         ({ misconception, response }, i) => {
@@ -149,44 +149,44 @@ describe("bulkUploads", () => {
         lessons[0],
         "content_guidance",
         row,
-        updateFields,
+        lessonUpdateFields,
         tagIdToTextMap,
         contentGuidanceMap
       );
-      expect(row.length).toEqual(updateFields.content_guidance.size);
+      expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
 
       row = [];
       handleIdField(
         lessons[1],
         "content_guidance",
         row,
-        updateFields,
+        lessonUpdateFields,
         tagIdToTextMap,
         contentGuidanceMap
       );
-      expect(row.length).toEqual(updateFields.content_guidance.size);
+      expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
 
       row = [];
       handleIdField(
         lessons[0],
         "content_guidance",
         row,
-        updateFields,
+        lessonUpdateFields,
         tagIdToTextMap,
         contentGuidanceMap
       );
-      expect(row.length).toEqual(updateFields.content_guidance.size);
+      expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
 
       row = [];
       handleIdField(
         lessons[2],
         "content_guidance",
         row,
-        updateFields,
+        lessonUpdateFields,
         tagIdToTextMap,
         contentGuidanceMap
       );
-      expect(row.length).toEqual(updateFields.content_guidance.size);
+      expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
     });
 
     test("should return an array with values equal to the equivalent key in the lesson record", () => {
@@ -194,7 +194,7 @@ describe("bulkUploads", () => {
         lessons[0],
         "content_guidance",
         row,
-        updateFields,
+        lessonUpdateFields,
         tagIdToTextMap,
         contentGuidanceMap
       );
@@ -208,7 +208,7 @@ describe("bulkUploads", () => {
         lessons[2],
         "tags",
         row,
-        updateFields,
+        lessonUpdateFields,
         tagIdToTextMap,
         contentGuidanceMap
       );
@@ -221,7 +221,7 @@ describe("bulkUploads", () => {
   describe("handleHeaderRow", () => {
     test("should return an array with the correct headers", () => {
       const values: string[][] = [];
-      handleHeaderRow(values, updateFields);
+      handleHeaderRow(values, lessonUpdateFields);
 
       expect(values[0]).toEqual([
         "unit_uid",
@@ -270,7 +270,7 @@ describe("bulkUploads", () => {
     test("should return an array with the correct values", () => {
       const tableRows = buildTableRows(
         lessons,
-        updateFields,
+        lessonUpdateFields,
         tagIdToTextMap,
         contentGuidanceMap
       );
