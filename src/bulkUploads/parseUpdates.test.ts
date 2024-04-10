@@ -2,14 +2,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { bulkUpdates, currentRecordsMap } from "./fixtures/bulkUpdates";
-import { updateFields } from "./fixtures/updateFields";
+import { lessonUpdateFields } from "./fixtures/updateFields";
 import { parseUpdates } from "./parseUpdates";
 import { catTagMap, tagIdToTextMap } from "./fixtures/catTagMaps";
 import {
   descriptionToId,
   contentGuidanceMap,
 } from "./fixtures/contentGuidanceMaps";
-import { type UpdateFields, isIdField } from "./types/bulkUpdateFields";
+import { type LessonUpdateFields, isIdField } from "./types/bulkUpdateFields";
 import type { IdAndText, IdArrayFields } from "./types/lessonRecord";
 
 const conversionMaps = {
@@ -23,7 +23,7 @@ describe("parseUpdates", () => {
     const { parsedUpdates } = parseUpdates(
       bulkUpdates,
       currentRecordsMap,
-      updateFields,
+      lessonUpdateFields,
       conversionMaps
     );
 
@@ -33,7 +33,7 @@ describe("parseUpdates", () => {
       Object.entries(update).forEach(([key, value]) => {
         const currentField = current?.[key as keyof IdArrayFields] ?? [];
 
-        if (isIdField(key as keyof UpdateFields)) {
+        if (isIdField(key as keyof LessonUpdateFields)) {
           const actual = (value as IdAndText[]).map(({ id }) => id);
 
           expect(actual).toEqual((current as any)?.[key] ?? []);
@@ -57,7 +57,7 @@ describe("parseUpdates", () => {
         "lesson_outline-1": "",
       })),
       currentRecordsMap,
-      updateFields,
+      lessonUpdateFields,
       conversionMaps
     );
 
@@ -67,7 +67,7 @@ describe("parseUpdates", () => {
       Object.entries(update).forEach(([key, value]) => {
         const currentField = current?.[key as keyof IdArrayFields] ?? [];
 
-        if (isIdField(key as keyof UpdateFields)) {
+        if (isIdField(key as keyof LessonUpdateFields)) {
           const actual = (value as IdAndText[]).map(({ id }) => id);
 
           expect(actual).toEqual((current as any)?.[key] ?? []);
@@ -95,7 +95,7 @@ describe("parseUpdates", () => {
     const { parsedUpdates } = parseUpdates(
       customBulkUpdates,
       currentRecordsMap,
-      updateFields,
+      lessonUpdateFields,
       conversionMaps
     );
 
@@ -134,7 +134,7 @@ describe("parseUpdates", () => {
     const { parsedUpdates } = parseUpdates(
       bulkUpdates,
       currentRecordsMap,
-      updateFields,
+      lessonUpdateFields,
       conversionMaps
     );
 
@@ -162,7 +162,7 @@ describe("parseUpdates", () => {
       const { errors } = parseUpdates(
         [one],
         currentRecordsMap,
-        updateFields,
+        lessonUpdateFields,
         conversionMaps
       );
 
@@ -203,7 +203,7 @@ describe("parseUpdates", () => {
       const { errors } = parseUpdates(
         [bulkUpdates[0], bulkUpdates[0], bulkUpdates[2], bulkUpdates[2]],
         currentRecordsMap,
-        updateFields,
+        lessonUpdateFields,
         conversionMaps
       );
 
@@ -227,7 +227,7 @@ describe("parseUpdates", () => {
           { ...bulkUpdates[1], lesson_uid: "not-a-uid" },
         ],
         currentRecordsMap,
-        updateFields,
+        lessonUpdateFields,
         conversionMaps
       );
 
@@ -248,7 +248,7 @@ describe("parseUpdates", () => {
           { ...bulkUpdates[1], title: "null" },
         ],
         currentRecordsMap,
-        updateFields,
+        lessonUpdateFields,
         conversionMaps
       );
 
@@ -272,7 +272,7 @@ describe("parseUpdates", () => {
           { ...bulkUpdates[1], "tags-1": "not-a-tag-two" },
         ],
         currentRecordsMap,
-        updateFields,
+        lessonUpdateFields,
         conversionMaps
       );
 
@@ -296,7 +296,7 @@ describe("parseUpdates", () => {
           { ...bulkUpdates[1], "content_guidance-1": "not-a-guidance-two" },
         ],
         currentRecordsMap,
-        updateFields,
+        lessonUpdateFields,
         conversionMaps
       );
 
@@ -332,7 +332,7 @@ describe("parseUpdates", () => {
       const { errors } = parseUpdates(
         [one, one, two, three],
         currentRecordsMap,
-        updateFields,
+        lessonUpdateFields,
         conversionMaps
       );
 

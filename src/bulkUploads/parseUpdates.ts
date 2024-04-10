@@ -1,4 +1,4 @@
-import type { UpdateFields } from "./types/bulkUpdateFields";
+import type { LessonUpdateFields } from "./types/bulkUpdateFields";
 import type {
   LessonRecord,
   IdAndText,
@@ -30,7 +30,7 @@ import {
  * @returns
  */
 export const handleNonIdArrayFields = (
-  bulkUpdateFields: UpdateFields,
+  bulkUpdateFields: LessonUpdateFields,
   key: NonIdArrayFields,
   update: UpdateRecord,
   currentField: LessonRecord[NonIdArrayFields],
@@ -121,7 +121,7 @@ export const handleStringFields = (
   update: UpdateRecord,
   key: keyof StringFields,
   updateAsRecord: Partial<LessonRecord>,
-  bulkUpdateFields: UpdateFields,
+  bulkUpdateFields: LessonUpdateFields,
   logError: ErrorLogger
 ) => {
   const updateValue = update[key];
@@ -167,7 +167,7 @@ const handleIdFields = (
   update: UpdateRecord,
   key: keyof IdArrayFields,
   currentField: IdAndText[] | number[],
-  bulkUpdateFields: UpdateFields,
+  bulkUpdateFields: LessonUpdateFields,
   conversionMaps: ConversionMaps,
   updateAsRecord: Partial<LessonRecord>,
   logError: ErrorLogger
@@ -229,7 +229,7 @@ const handleIdFields = (
 export const parseUpdates = (
   updates: UpdateRecord[],
   currentRecords: Map<string, LessonRecord>,
-  bulkUpdateFields: UpdateFields,
+  bulkUpdateFields: LessonUpdateFields,
   conversionMaps: {
     guidanceMap: Map<string, number>;
     tagMap: Map<string, number>;
@@ -254,7 +254,7 @@ export const parseUpdates = (
         lesson_id: currentRecord.lesson_id,
       };
 
-      let key: keyof UpdateFields;
+      let key: keyof LessonUpdateFields;
       for (key in bulkUpdateFields) {
         if (key === "title" || key === "pupil_lesson_outcome") {
           handleStringFields(
