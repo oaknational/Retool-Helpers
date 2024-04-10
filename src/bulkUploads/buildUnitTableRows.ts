@@ -35,7 +35,7 @@ export const handleUnitIdField = (
   tagMap: Map<number, string>
 ) => {
   const value = record[key] ?? [];
-  for (let i = 0; i < (updateFields[key]?.size ?? 0); i++) {
+  for (let i = 0; i < updateFields[key].size; i++) {
     if (key === "exam_board_specification_content") {
       row.push(EBSMap.get(value[i]) ?? "");
     }
@@ -67,7 +67,7 @@ export const handleUnitHeaderRow = (
       return;
     }
 
-    for (let i = 0; i < (updateFields[key]?.size ?? 0); i++) {
+    for (let i = 0; i < updateFields[key].size; i++) {
       headers.push(`${key}-${i + 1}`);
     }
   });
@@ -107,7 +107,7 @@ export const buildUnitTableRows = (
 
       if (isUnitStringArrayField(field)) {
         const options = updateFields[field];
-        for (let i = 0; i < (options?.size ?? 0); i++) {
+        for (let i = 0; i < options.size; i++) {
           row.push(record[field]?.[i] ?? "");
         }
       }
