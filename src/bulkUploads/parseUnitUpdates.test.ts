@@ -278,14 +278,7 @@ describe("parseUnitUpdates", () => {
       );
     });
   });
-  // missingTitle: new Set(),
-  // duplicateUids: new Set(),
-  // nonAccessibleUids: new Set(),
-  // invalidPlannedNumber: new Set(),
-  // tooLong: new Map(),
-  // incorrectTags: new Map(),
-  // incorrectExamBoardSpecificationContent: new Map(),
-  // incorrectNationalCurriculumContent: new Map(),
+
   describe("Errors", () => {
     test("should catch fields that are too long", () => {
       const update = structuredClone(unitBulkUpdates[0]);

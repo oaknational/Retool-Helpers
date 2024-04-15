@@ -131,13 +131,13 @@ export const checkStringValue = (
       return false;
     }
 
-    type Whoops = keyof UnitStringFields;
-    type Ahhh = keyof StringFields;
+    type UnitStringKeys = keyof UnitStringFields;
+    type LessonStringKeys = keyof StringFields;
 
     if (isLessonRecord(updateAsRecord)) {
-      updateAsRecord[key as Ahhh] = "";
+      updateAsRecord[key as LessonStringKeys] = "";
     } else {
-      updateAsRecord[key as Whoops] = "";
+      updateAsRecord[key as UnitStringKeys] = "";
     }
     return false;
   }
