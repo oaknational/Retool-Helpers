@@ -12,6 +12,7 @@ import {
   isSingleKeyArrayField,
   isStringField,
 } from "./types/bulkUpdateFields";
+import { removeSpecialCharacters } from "../index";
 
 /**
  * Turns the array fields which contain an object with a single key, (i.e. teacher_tips, or key_learning_points), into a row of strings.
@@ -41,19 +42,19 @@ export const handleSingleKeyArrayField = (
     const valueIndex = updateFields[key].primaryElementKey;
 
     if ("key_learning_point" in value && valueIndex === "key_learning_point") {
-      row.push(value[valueIndex]);
+      row.push(removeSpecialCharacters(value[valueIndex]));
       continue;
     }
     if ("lesson_outline" in value && valueIndex === "lesson_outline") {
-      row.push(value[valueIndex]);
+      row.push(removeSpecialCharacters(value[valueIndex]));
       continue;
     }
     if ("teacher_tip" in value && valueIndex === "teacher_tip") {
-      row.push(value[valueIndex]);
+      row.push(removeSpecialCharacters(value[valueIndex]));
       continue;
     }
     if ("equipment" in value && valueIndex === "equipment") {
-      row.push(value[valueIndex]);
+      row.push(removeSpecialCharacters(value[valueIndex]));
       continue;
     }
 
@@ -88,10 +89,10 @@ export const handleJointKeyArrayField = (
     const secondaryKey = updateFields[key].secondaryElementKey;
 
     if ("keyword" in value && primaryKey === "keyword") {
-      row.push(value[primaryKey]);
+      row.push(removeSpecialCharacters(value[primaryKey]));
 
       if ("description" in value && secondaryKey === "description") {
-        row.push(value[secondaryKey]);
+        row.push(removeSpecialCharacters(value[secondaryKey]));
         continue;
       }
 
@@ -100,10 +101,10 @@ export const handleJointKeyArrayField = (
     }
 
     if ("misconception" in value && primaryKey === "misconception") {
-      row.push(value[primaryKey]);
+      row.push(removeSpecialCharacters(value[primaryKey]));
 
       if ("response" in value && secondaryKey === "response") {
-        row.push(value[secondaryKey]);
+        row.push(removeSpecialCharacters(value[secondaryKey]));
         continue;
       }
 
@@ -213,7 +214,8 @@ export const buildTableRows = (
     let field: keyof LessonUpdateFields;
     for (field in updateFields) {
       if (isStringField(field)) {
-        row.push(record[field]);
+        const value = removeSpecialCharacters(record[field]);
+        row.push(value);
       }
       if (isSingleKeyArrayField(field)) {
         handleSingleKeyArrayField(record, field, row, updateFields);

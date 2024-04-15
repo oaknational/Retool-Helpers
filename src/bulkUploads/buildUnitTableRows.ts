@@ -6,6 +6,7 @@ import {
   isUnitStringArrayField,
   isUnitIdField,
 } from "./types/unitBulkUpdateFields";
+import { removeSpecialCharacters } from "../index";
 
 /**
  * Turns the array fields which contains IDs (i.e tags or national curriculum content ) into the corresponding strings.
@@ -102,13 +103,17 @@ export const buildUnitTableRows = (
     let field: keyof UnitUpdateFields;
     for (field in updateFields) {
       if (isUnitStringField(field) || isUnitNumericField(field)) {
-        row.push(record[field] ?? "");
+        const value = isUnitStringField(field)
+          ? removeSpecialCharacters(record[field] ?? "")
+          : record[field];
+
+        row.push(value);
       }
 
       if (isUnitStringArrayField(field)) {
         const options = updateFields[field];
         for (let i = 0; i < options.size; i++) {
-          row.push(record[field]?.[i] ?? "");
+          row.push(removeSpecialCharacters(record[field]?.[i] ?? ""));
         }
       }
 
