@@ -37,13 +37,13 @@ export const handleUnitIdField = (
   const value = record[key] ?? [];
   for (let i = 0; i < updateFields[key].size; i++) {
     if (key === "exam_board_specification_content") {
-      row.push(EBSMap.get(value[i]) ?? "");
+      row.push(EBSMap.get(value[i] as number) ?? "");
     }
     if (key === "national_curriculum_content") {
-      row.push(natCurricMap.get(value[i]) ?? "");
+      row.push(natCurricMap.get(value[i] as number) ?? "");
     }
     if (key === "tags") {
-      row.push(tagMap.get(value[i]) ?? "");
+      row.push(tagMap.get(value[i] as number) ?? "");
     }
   }
 };

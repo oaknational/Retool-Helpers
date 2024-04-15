@@ -1,4 +1,7 @@
-import type { LessonUpdateFields } from "./types/bulkUpdateFields";
+import type {
+  IdArrayUpdateFields,
+  LessonUpdateFields,
+} from "./types/bulkUpdateFields";
 import type {
   LessonRecord,
   IdAndText,
@@ -11,6 +14,7 @@ import type {
   UpdateRecord,
   ConversionMaps,
 } from "./types/parsingTypes";
+import type { UnitRecord, UnitStringFields } from "./types/unitRecord";
 
 import { type ErrorLogger, buildErrorLogger } from "./parsingErrors";
 import {
@@ -107,6 +111,48 @@ export const handleNonIdArrayFields = (
   return arrayUpdate;
 };
 
+const isLessonRecord = (
+  updateAsRecord: Partial<LessonRecord> | Partial<UnitRecord>
+): updateAsRecord is Partial<LessonRecord> => {
+  return "lesson_uid" in updateAsRecord;
+};
+
+export const checkStringValue = (
+  value: string,
+  key: string,
+  logError: ErrorLogger,
+  uid: string,
+  updateAsRecord: Partial<LessonRecord> | Partial<UnitRecord>,
+  maxLength?: number
+) => {
+  if (value.toLowerCase().trim() === "null") {
+    if (key === "title") {
+      logError("missingTitle", uid);
+      return false;
+    }
+
+    type Whoops = keyof UnitStringFields;
+    type Ahhh = keyof StringFields;
+
+    if (isLessonRecord(updateAsRecord)) {
+      updateAsRecord[key as Ahhh] = "";
+    } else {
+      updateAsRecord[key as Whoops] = "";
+    }
+    return false;
+  }
+
+  if (maxLength && value.length > maxLength) {
+    logError("tooLong", uid, {
+      maxLength: maxLength,
+      key,
+    });
+    return false;
+  }
+
+  return true;
+};
+
 /**
  * Handles the string fields, such as title and pupil_lesson_outcome.
  *
@@ -130,26 +176,44 @@ export const handleStringFields = (
   if (typeof updateValue !== "string" || updateValue === "") {
     return;
   }
+  if (
+    checkStringValue(
+      updateValue,
+      key,
+      logError,
+      update.lesson_uid,
+      updateAsRecord,
+      fieldDetails.maxLength
+    )
+  ) {
+    updateAsRecord[key] = updateValue;
+    return;
+  }
+};
+
+const checkIdFields = (
+  updateValue: string | undefined,
+  currentValue: number | IdAndText,
+  idToTextMap: Map<number, string>,
+  arrayUpdate: IdAndText[]
+): updateValue is string => {
+  if (typeof updateValue !== "string" || updateValue === "") {
+    if (typeof currentValue === "number") {
+      const text = idToTextMap.get(currentValue);
+      if (!text) {
+        throw new Error("unable to find text for ID");
+      }
+      arrayUpdate.push({ id: currentValue, text });
+      return false;
+    }
+    return false;
+  }
 
   if (updateValue.toLowerCase().trim() === "null") {
-    if (key === "title") {
-      logError("missingTitle", update.lesson_uid);
-      return;
-    }
-    updateAsRecord[key] = "";
-    return;
+    return false;
   }
 
-  if (fieldDetails.maxLength && updateValue.length > fieldDetails.maxLength) {
-    logError("tooLong", update.lesson_uid, {
-      maxLength: fieldDetails.maxLength,
-      key,
-    });
-    return;
-  }
-
-  updateAsRecord[key] = updateValue;
-  return;
+  return true;
 };
 
 /**
@@ -167,12 +231,11 @@ const handleIdFields = (
   update: UpdateRecord,
   key: keyof IdArrayFields,
   currentField: IdAndText[] | number[],
-  bulkUpdateFields: LessonUpdateFields,
+  fieldDetails: IdArrayUpdateFields,
   conversionMaps: ConversionMaps,
   updateAsRecord: Partial<LessonRecord>,
   logError: ErrorLogger
 ) => {
-  const fieldDetails = bulkUpdateFields[key];
   const arrayUpdate: IdAndText[] = [];
 
   for (let i = 0; i < fieldDetails.size; i++) {
@@ -182,28 +245,23 @@ const handleIdFields = (
       key === "content_guidance"
         ? conversionMaps.guidanceIdToTextMap
         : conversionMaps.tagIdToTextMap;
-
-    if (typeof updateValue !== "string" || updateValue === "") {
-      if (typeof currentValue === "number") {
-        const text = idToTextMap.get(currentValue);
-        if (!text) {
-          throw new Error("no text found");
-        }
-        arrayUpdate.push({ id: currentValue, text });
-      }
-      continue;
-    }
-
-    if (updateValue.toLowerCase().trim() === "null") {
-      continue;
-    }
-
-    const conversionMap =
+    const textToIdMap =
       key === "content_guidance"
         ? conversionMaps.guidanceMap
         : conversionMaps.tagMap;
 
-    const val = conversionMap.get(updateValue);
+    const shouldContinue = checkIdFields(
+      updateValue,
+      currentValue,
+      idToTextMap,
+      arrayUpdate
+    );
+
+    if (!shouldContinue) {
+      continue;
+    }
+
+    const val = textToIdMap.get(updateValue);
     if (val) {
       arrayUpdate.push({ id: val, text: updateValue });
     } else {
@@ -284,7 +342,7 @@ export const parseUpdates = (
             update,
             key,
             currentField,
-            bulkUpdateFields,
+            bulkUpdateFields[key],
             conversionMaps,
             updateAsRecord,
             logError

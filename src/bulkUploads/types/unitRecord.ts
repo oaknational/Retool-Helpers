@@ -1,3 +1,5 @@
+import type { IdAndText } from "./lessonRecord";
+
 export type UnitRecord = {
   unit_id: number;
 } & UnitIdFields &
@@ -21,7 +23,7 @@ export type UnitStringFields = {
 };
 
 export type UnitIdFields = {
-  national_curriculum_content: number[] | null;
-  exam_board_specification_content: number[] | null;
-  tags: number[] | null;
+  national_curriculum_content: IdAndText[] | number[] | null;
+  exam_board_specification_content: IdAndText[] | number[] | null;
+  tags: IdAndText[] | number[] | null;
 };
