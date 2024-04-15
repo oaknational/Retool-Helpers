@@ -10,7 +10,7 @@ import {
   buildTableRows,
 } from "./buildTableRows";
 import { lessonUpdateFields } from "./fixtures/updateFields";
-import { contentGuidanceMap } from "./fixtures/contentGuidanceMaps";
+import { contentGuidanceIdToText } from "./fixtures/contentGuidanceMaps";
 import { tagIdToTextMap } from "./fixtures/catTagMaps";
 
 describe("bulkUploads", () => {
@@ -151,7 +151,7 @@ describe("bulkUploads", () => {
         row,
         lessonUpdateFields,
         tagIdToTextMap,
-        contentGuidanceMap
+        contentGuidanceIdToText
       );
       expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
 
@@ -162,7 +162,7 @@ describe("bulkUploads", () => {
         row,
         lessonUpdateFields,
         tagIdToTextMap,
-        contentGuidanceMap
+        contentGuidanceIdToText
       );
       expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
 
@@ -173,7 +173,7 @@ describe("bulkUploads", () => {
         row,
         lessonUpdateFields,
         tagIdToTextMap,
-        contentGuidanceMap
+        contentGuidanceIdToText
       );
       expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
 
@@ -184,7 +184,7 @@ describe("bulkUploads", () => {
         row,
         lessonUpdateFields,
         tagIdToTextMap,
-        contentGuidanceMap
+        contentGuidanceIdToText
       );
       expect(row.length).toEqual(lessonUpdateFields.content_guidance.size);
     });
@@ -196,11 +196,11 @@ describe("bulkUploads", () => {
         row,
         lessonUpdateFields,
         tagIdToTextMap,
-        contentGuidanceMap
+        contentGuidanceIdToText
       );
 
       lessons[0].content_guidance?.forEach((id, i) => {
-        expect(row[i]).toBe(contentGuidanceMap.get(id as number));
+        expect(row[i]).toBe(contentGuidanceIdToText.get(id as number));
       });
 
       row = [];
@@ -210,7 +210,7 @@ describe("bulkUploads", () => {
         row,
         lessonUpdateFields,
         tagIdToTextMap,
-        contentGuidanceMap
+        contentGuidanceIdToText
       );
       lessons[2].tags?.forEach((id, i) => {
         expect(row[i]).toBe(tagIdToTextMap.get(id as number));
@@ -272,7 +272,7 @@ describe("bulkUploads", () => {
         lessons,
         lessonUpdateFields,
         tagIdToTextMap,
-        contentGuidanceMap
+        contentGuidanceIdToText
       );
 
       const expected = readFileSync(

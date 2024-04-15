@@ -1,4 +1,4 @@
-export const contentGuidanceMap = new Map([
+export const contentGuidanceIdToText = new Map([
   [1, "Strong language"],
   [
     2,
@@ -75,7 +75,7 @@ export const contentGuidanceMap = new Map([
   [40, "legacy content guidance"],
 ]);
 
-export const descriptionToId = new Map([
+export const contentGuidanceTextToId = new Map([
   ["Strong language", 1],
   [
     "Discriminatory language, behaviour or images, whether on the grounds of race, gender, disability, religion or belief or sexual orientation, or otherwise.",

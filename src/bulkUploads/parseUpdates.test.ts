@@ -4,18 +4,18 @@
 import { bulkUpdates, currentRecordsMap } from "./fixtures/bulkUpdates";
 import { lessonUpdateFields } from "./fixtures/updateFields";
 import { parseUpdates } from "./parseUpdates";
-import { catTagMap, tagIdToTextMap } from "./fixtures/catTagMaps";
+import { tagTextToIdMap, tagIdToTextMap } from "./fixtures/catTagMaps";
 import {
-  descriptionToId,
-  contentGuidanceMap,
+  contentGuidanceIdToText,
+  contentGuidanceTextToId,
 } from "./fixtures/contentGuidanceMaps";
 import { type LessonUpdateFields, isIdField } from "./types/bulkUpdateFields";
 import type { IdAndText, IdArrayFields } from "./types/lessonRecord";
 
 const conversionMaps = {
-  guidanceMap: descriptionToId,
-  guidanceIdToTextMap: contentGuidanceMap,
-  tagMap: catTagMap,
+  guidanceMap: contentGuidanceTextToId,
+  guidanceIdToTextMap: contentGuidanceIdToText,
+  tagMap: tagTextToIdMap,
   tagIdToTextMap,
 };
 describe("parseUpdates", () => {

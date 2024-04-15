@@ -1,14 +1,49 @@
 import type {
-  ExportErrors,
-  PossibleErrors,
+  PossibleLessonErrors,
   LogOptions,
+  LessonExportErrors,
+  UnitExportErrors,
 } from "./types/parsingTypes";
+
+export const handleTooLongError = (
+  lessonUid: string,
+  errorLog: LessonExportErrors | UnitExportErrors,
+  options?: LogOptions | { value: string }
+) => {
+  if (!options || !("key" in options)) {
+    throw new Error("Missing options for tooLong error");
+  }
+  const { maxLength, key } = options;
+  if (errorLog.tooLong.has(key)) {
+    errorLog.tooLong.get(key)?.uuids.add(lessonUid);
+  } else {
+    errorLog.tooLong.set(key, { maxLength, uuids: new Set([lessonUid]) });
+  }
+};
+
+export const handleMapErrors = (
+  errMap: Map<string, Set<string>>,
+  lessonUid: string,
+  options?: LogOptions | { value: string }
+) => {
+  if (!options || !("value" in options)) {
+    throw new Error(
+      "Missing options for incorrectGuidance or incorrectTags error"
+    );
+  }
+
+  if (errMap.has(lessonUid)) {
+    errMap.get(lessonUid)?.add(options.value);
+  } else {
+    errMap.set(lessonUid, new Set([options.value]));
+  }
+};
 
 export const buildErrorLogger = () => {
   const allUids = new Set();
   let hasError = false;
 
-  const errorLog: ExportErrors = {
+  const errorLog: LessonExportErrors = {
     missingTitle: new Set(),
     duplicateUids: new Set(),
     nonAccessibleUids: new Set(),
@@ -19,7 +54,7 @@ export const buildErrorLogger = () => {
 
   function logError<
     T extends Exclude<
-      PossibleErrors,
+      PossibleLessonErrors,
       "tooLong" | "incorrectGuidance" | "incorrectTags"
     >
   >(error: T, lessonUid: string): void;
@@ -34,43 +69,24 @@ export const buildErrorLogger = () => {
     options: LogOptions
   ): void;
   function logError(
-    error: PossibleErrors,
+    error: PossibleLessonErrors,
     lessonUid: string,
     options?: LogOptions | { value: string }
   ) {
     hasError = true;
 
     if (error === "tooLong") {
-      if (!options || !("key" in options)) {
-        throw new Error("Missing options for tooLong error");
-      }
-      const { maxLength, key } = options;
-      if (errorLog.tooLong.has(key)) {
-        errorLog.tooLong.get(key)?.uuids.add(lessonUid);
-      } else {
-        errorLog.tooLong.set(key, { maxLength, uuids: new Set([lessonUid]) });
-      }
+      handleTooLongError(lessonUid, errorLog, options);
       return;
     }
 
     if (error === "incorrectGuidance" || error === "incorrectTags") {
-      if (!options || !("value" in options)) {
-        throw new Error(
-          "Missing options for incorrectGuidance or incorrectTags error"
-        );
-      }
-
-      if (errorLog[error].has(lessonUid)) {
-        errorLog[error].get(lessonUid)?.add(options.value);
-      } else {
-        errorLog[error].set(lessonUid, new Set([options.value]));
-      }
-
+      const errMap = errorLog[error];
+      handleMapErrors(errMap, lessonUid, options);
       return;
     }
 
     errorLog[error].add(lessonUid);
-    return;
   }
 
   return {

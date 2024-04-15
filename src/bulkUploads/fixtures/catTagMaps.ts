@@ -26,7 +26,7 @@ export const tagIdToTextMap = new Map([
   [25, "Profound and multiple learning disabilities"],
 ]);
 
-export const catTagMap = new Map([
+export const tagTextToIdMap = new Map([
   ["Adaptable", 1],
   ["Fieldwork", 2],
   ["Biology", 3],
