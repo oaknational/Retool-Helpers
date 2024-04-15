@@ -8,7 +8,7 @@ import {
   handleUnitHeaderRow,
   handleUnitIdField,
 } from "./buildUnitTableRows";
-import { natCurricMap } from "./fixtures/curricMap";
+import { natCurricIdToTextMap } from "./fixtures/curricMap";
 
 describe("bulkUploads (unit)", () => {
   const units = JSON.parse(
@@ -27,7 +27,7 @@ describe("bulkUploads (unit)", () => {
         "exam_board_specification_content",
         row,
         unitUpdateFields,
-        natCurricMap,
+        natCurricIdToTextMap,
         new Map(),
         tagIdToTextMap
       );
@@ -41,7 +41,7 @@ describe("bulkUploads (unit)", () => {
         "national_curriculum_content",
         row,
         unitUpdateFields,
-        natCurricMap,
+        natCurricIdToTextMap,
         new Map(),
         tagIdToTextMap
       );
@@ -55,7 +55,7 @@ describe("bulkUploads (unit)", () => {
         "tags",
         row,
         unitUpdateFields,
-        natCurricMap,
+        natCurricIdToTextMap,
         new Map(),
         tagIdToTextMap
       );
@@ -68,12 +68,12 @@ describe("bulkUploads (unit)", () => {
         "tags",
         row,
         unitUpdateFields,
-        natCurricMap,
+        natCurricIdToTextMap,
         new Map(),
         tagIdToTextMap
       );
       units[2].tags?.forEach((id, i) => {
-        expect(row[i]).toBe(tagIdToTextMap.get(id));
+        expect(row[i]).toBe(tagIdToTextMap.get(id as number));
       });
     });
   });
@@ -143,7 +143,7 @@ describe("bulkUploads (unit)", () => {
       const tableRows = buildUnitTableRows(
         units,
         unitUpdateFields,
-        natCurricMap,
+        natCurricIdToTextMap,
         new Map(),
         tagIdToTextMap
       );
