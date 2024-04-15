@@ -12,6 +12,7 @@ import {
   buildTableRows,
   parseUpdates,
   buildUnitTableRows,
+  parseUnitUpdates,
 } from "./bulkUploads/index";
 
 export {
@@ -21,6 +22,7 @@ export {
   buildTableRows,
   parseUpdates,
   buildUnitTableRows,
+  parseUnitUpdates,
 };
 
 // When bundled for the browser, this object
@@ -33,6 +35,7 @@ const oakRetoolHelpers = {
   buildTableRows,
   parseUpdates,
   buildUnitTableRows,
+  parseUnitUpdates,
 };
 
 declare global {

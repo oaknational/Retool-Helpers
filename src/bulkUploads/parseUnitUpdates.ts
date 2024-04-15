@@ -10,6 +10,7 @@ import type { UnitUpdateRecord } from "./types/unitParsingTypes";
 
 import { buildUnitErrorLogger } from "./parsingUnitErrors";
 import { checkStringValue } from "./parseUpdates";
+import { insertSpecialCharacters } from "../index";
 
 type ConversionMaps = {
   natCurricMap: Map<string, number>;
@@ -111,11 +112,13 @@ export const parseUnitUpdates = (
 
         if (isUnitStringField(key)) {
           const fieldDetails = bulkUpdateFields[key];
-          const updateValue = update[key];
+          const initialValue = update[key] ?? "";
 
-          if (typeof updateValue !== "string" || updateValue === "") {
+          if (typeof initialValue !== "string" || initialValue === "") {
             continue;
           }
+
+          const updateValue = insertSpecialCharacters(initialValue);
 
           if (
             checkStringValue(
@@ -138,15 +141,16 @@ export const parseUnitUpdates = (
           const updateCollection: string[] = [];
 
           for (let i = 0; i < fieldDetails.size; i++) {
-            const updateValue = update[`${key}-${i + 1}`];
+            const initialValue = update[`${key}-${i + 1}`];
             const currentValue = currentField[i];
 
-            if (typeof updateValue !== "string" || updateValue === "") {
+            if (typeof initialValue !== "string" || initialValue === "") {
               if (currentValue) {
                 updateCollection.push(currentValue);
               }
               continue;
             }
+            const updateValue = insertSpecialCharacters(initialValue);
 
             if (updateValue.toLowerCase().trim() === "null") {
               continue;

@@ -270,7 +270,7 @@ export const currentRecordsMap = new Map([
       key_learning_points: [
         {
           key_learning_point:
-            "In the introduction, make reference to the writers’ over-arching messages and the shifts or consistency of their tone.",
+            "In the introduction, make reference to the writers' over-arching messages and the shifts or consistency of their tone.",
         },
         {
           key_learning_point:
@@ -278,7 +278,7 @@ export const currentRecordsMap = new Map([
         },
         {
           key_learning_point:
-            "Use the middle paragraph to compare how the writers’ attitude/tone shifts and the exploration of structural features.",
+            "Use the middle paragraph to compare how the writers' attitude/tone shifts and the exploration of structural features.",
         },
         {
           key_learning_point:
@@ -288,12 +288,12 @@ export const currentRecordsMap = new Map([
       keywords: [
         {
           description:
-            "something so important it affects all other areas- in English, we refer to a writer’s overarching idea",
+            "something so important it affects all other areas- in English, we refer to a writer's overarching idea",
           keyword: "overarching",
         },
         {
           description:
-            "when applied to writing, this refers to a change in the writer’s perspective",
+            "when applied to writing, this refers to a change in the writer's perspective",
           keyword: "shift",
         },
         {
@@ -361,7 +361,7 @@ export const currentRecordsMap = new Map([
         },
         {
           key_learning_point:
-            "Contrast creates a robust sense of a writer’s perspective, by demonstrating feeling towards all angles of an argument.",
+            "Contrast creates a robust sense of a writer's perspective, by demonstrating feeling towards all angles of an argument.",
         },
         {
           key_learning_point:
@@ -543,7 +543,7 @@ export const currentRecordsMap = new Map([
       key_learning_points: [
         {
           key_learning_point:
-            "Make three linked points about the writer’s attitudes or perspectives, supported by a range of evidence from both texts.",
+            "Make three linked points about the writer's attitudes or perspectives, supported by a range of evidence from both texts.",
         },
         {
           key_learning_point:
@@ -551,7 +551,7 @@ export const currentRecordsMap = new Map([
         },
         {
           key_learning_point:
-            "Use adjectives to track changes in the writers’ perspectives from the start to the end of the text.",
+            "Use adjectives to track changes in the writers' perspectives from the start to the end of the text.",
         },
         {
           key_learning_point:
@@ -571,7 +571,7 @@ export const currentRecordsMap = new Map([
         },
         {
           description:
-            "when applied to writing, this refers to a change in the writer’s perspective",
+            "when applied to writing, this refers to a change in the writer's perspective",
           keyword: "shift",
         },
         {
@@ -581,7 +581,7 @@ export const currentRecordsMap = new Map([
         },
         {
           description:
-            "comparative conjunctions are used to show a difference between two ideas (e.g. ‘whereas’ )",
+            "comparative conjunctions are used to show a difference between two ideas (e.g. ‘whereas' )",
           keyword: "comparative conjunctions",
         },
       ],
@@ -654,7 +654,7 @@ export const currentRecordsMap = new Map([
         },
         {
           key_learning_point:
-            "Create an over-arching sense of the writer’s purpose or underlying message - show how this is conveyed through language.",
+            "Create an over-arching sense of the writer's purpose or underlying message - show how this is conveyed through language.",
         },
       ],
       keywords: [
@@ -665,7 +665,7 @@ export const currentRecordsMap = new Map([
         },
         {
           description:
-            "something so important it affects all other areas- in English, we refer to a writer’s overarching idea",
+            "something so important it affects all other areas- in English, we refer to a writer's overarching idea",
           keyword: "overarching",
         },
         {

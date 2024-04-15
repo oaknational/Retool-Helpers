@@ -22,6 +22,7 @@ import {
   isJointArrayField,
   isIdField,
 } from "./types/bulkUpdateFields";
+import { insertSpecialCharacters } from "../index";
 
 /**
  * Handles the non-id array fields, such as teacher_tips, key_learning_points, etc.
@@ -48,16 +49,32 @@ export const handleNonIdArrayFields = (
       : undefined;
 
   for (let i = 0; i < fieldDetails.size; i++) {
-    const updateValue = update[`${key}-${i + 1}` as keyof UpdateRecord];
-    const secondaryUpdateValue =
+    const initialValue = update[`${key}-${i + 1}` as keyof UpdateRecord];
+    const secondaryInitialValue =
       update[`${key}-${i + 1}-${secondaryKey}` as keyof UpdateRecord];
 
-    if (typeof updateValue !== "string" || updateValue === "") {
+    if (typeof initialValue !== "string" || initialValue === "") {
       const currentValue = currentField?.[i] as NonIdArrayElement | undefined;
 
       if (currentValue) {
-        if (secondaryKey && secondaryUpdateValue) {
+        if (secondaryKey && secondaryInitialValue) {
+          const secondaryUpdateValue = insertSpecialCharacters(
+            secondaryInitialValue
+          );
+
+          if (
+            "maxLengthSecondary" in fieldDetails &&
+            secondaryUpdateValue.length > fieldDetails.maxLengthSecondary
+          ) {
+            logError("tooLong", update.lesson_uid, {
+              maxLength: fieldDetails.maxLengthSecondary,
+              key: fieldDetails.secondaryElementKey,
+            });
+            continue;
+          }
+
           currentValue[secondaryKey] = secondaryUpdateValue;
+
           if (secondaryUpdateValue.toLowerCase().trim() === "null") {
             currentValue[secondaryKey] = "";
           }
@@ -66,6 +83,7 @@ export const handleNonIdArrayFields = (
       }
       continue;
     }
+    const updateValue = insertSpecialCharacters(initialValue);
 
     if (updateValue.toLowerCase().trim() === "null") {
       continue;
@@ -84,13 +102,16 @@ export const handleNonIdArrayFields = (
     } as NonIdArrayElement;
 
     const secondaryValueIsNull =
-      secondaryUpdateValue?.toLowerCase().trim() === "null";
+      secondaryInitialValue?.toLowerCase().trim() === "null";
 
     if (secondaryKey) {
       if (secondaryValueIsNull) {
         val[secondaryKey] = "";
       }
-      if (secondaryUpdateValue && !secondaryValueIsNull) {
+      if (secondaryInitialValue && !secondaryValueIsNull) {
+        const secondaryUpdateValue = insertSpecialCharacters(
+          secondaryInitialValue
+        );
         if (
           "maxLengthSecondary" in fieldDetails &&
           secondaryUpdateValue.length > fieldDetails.maxLengthSecondary
@@ -170,12 +191,15 @@ export const handleStringFields = (
   bulkUpdateFields: LessonUpdateFields,
   logError: ErrorLogger
 ) => {
-  const updateValue = update[key];
+  const initialValue = update[key];
   const fieldDetails = bulkUpdateFields[key];
 
-  if (typeof updateValue !== "string" || updateValue === "") {
+  if (typeof initialValue !== "string" || initialValue === "") {
     return;
   }
+
+  const updateValue = insertSpecialCharacters(initialValue);
+
   if (
     checkStringValue(
       updateValue,

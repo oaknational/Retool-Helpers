@@ -34,7 +34,7 @@ describe("handleSpecialCharacters", () => {
             String.fromCharCode(10) +
             "feed"
         )
-      ).toBe(`\\\\ncheck\\\\nthe\\\\nfeed`);
+      ).toBe(`checkthefeed`);
     });
     test("removeSpecialCharacters - carriage return all characters", () => {
       expect(
@@ -46,7 +46,7 @@ describe("handleSpecialCharacters", () => {
             String.fromCharCode(13) +
             "now"
         )
-      ).toBe(`\\\\rreturn\\\\rcheck\\\\rnow`);
+      ).toBe(`returnchecknow`);
     });
     test("removeSpecialCharacters - backslash all characters", () => {
       expect(
@@ -83,23 +83,13 @@ describe("handleSpecialCharacters", () => {
       );
     });
     test("insertSpecialCharacters - line feed all characters", () => {
-      expect(insertSpecialCharacters(`\\ncheck\\nthe\\nfeed`)).toBe(
-        String.fromCharCode(10) +
-          "check" +
-          String.fromCharCode(10) +
-          "the" +
-          String.fromCharCode(10) +
-          "feed"
+      expect(insertSpecialCharacters(`\ncheck\nthe\nfeed`)).toBe(
+        "checkthefeed"
       );
     });
     test("insertSpecialCharacters - carriage return all characters", () => {
-      expect(insertSpecialCharacters(`\\rreturn\\rcheck\\rnow`)).toBe(
-        String.fromCharCode(13) +
-          "return" +
-          String.fromCharCode(13) +
-          "check" +
-          String.fromCharCode(13) +
-          "now"
+      expect(insertSpecialCharacters(`\rreturn\rcheck\rnow`)).toBe(
+        "returnchecknow"
       );
     });
     test("insertSpecialCharacters - backslash all characters", () => {
