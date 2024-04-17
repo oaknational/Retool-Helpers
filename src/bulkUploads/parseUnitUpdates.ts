@@ -10,7 +10,7 @@ import type { UnitUpdateRecord } from "./types/unitParsingTypes";
 
 import { buildUnitErrorLogger } from "./parsingUnitErrors";
 import { checkStringValue } from "./parseUpdates";
-import { insertSpecialCharacters } from "../index";
+import { sanitiseForDb } from "../index";
 
 type ConversionMaps = {
   natCurricMap: Map<string, number>;
@@ -118,7 +118,7 @@ export const parseUnitUpdates = (
             continue;
           }
 
-          const updateValue = insertSpecialCharacters(initialValue);
+          const updateValue = sanitiseForDb(initialValue);
 
           if (
             checkStringValue(
@@ -150,7 +150,7 @@ export const parseUnitUpdates = (
               }
               continue;
             }
-            const updateValue = insertSpecialCharacters(initialValue);
+            const updateValue = sanitiseForDb(initialValue);
 
             if (updateValue.toLowerCase().trim() === "null") {
               continue;

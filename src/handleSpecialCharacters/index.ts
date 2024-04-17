@@ -31,3 +31,31 @@ export const insertSpecialCharacters = (text: string): string => {
     .replaceAll("\\t", String.fromCharCode(9))
     .replaceAll(String.fromCharCode(92, 92), String.fromCharCode(92));
 };
+
+/**
+ * Removes disallowed special characters: line feeds, carriage returns, tabs and backslashes
+ * and replaces single and double speech marks with their sanitised versions
+ */
+export const sanitiseForTsv = (text: string): string => {
+  return text
+    .replaceAll("'", "’")
+    .replaceAll('"', "”")
+    .replaceAll("\n", "")
+    .replaceAll("\r", "")
+    .replaceAll("\t", "")
+    .replaceAll("\\", "");
+};
+
+/**
+ * Removes disallowed special characters: line feeds, carriage returns, tabs and backslashes
+ * and replaces sanitised single and double speech marks with their usual versions
+ */
+export const sanitiseForDb = (text: string): string => {
+  return text
+    .replaceAll("’", "'")
+    .replaceAll("”", '"')
+    .replaceAll("\n", "")
+    .replaceAll("\r", "")
+    .replaceAll("\t", "")
+    .replaceAll("\\", "");
+};

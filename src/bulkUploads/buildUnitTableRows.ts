@@ -6,7 +6,7 @@ import {
   isUnitStringArrayField,
   isUnitIdField,
 } from "./types/unitBulkUpdateFields";
-import { removeSpecialCharacters } from "../index";
+import { sanitiseForTsv } from "../index";
 
 /**
  * Turns the array fields which contains IDs (i.e tags or national curriculum content ) into the corresponding strings.
@@ -104,7 +104,7 @@ export const buildUnitTableRows = (
     for (field in updateFields) {
       if (isUnitStringField(field) || isUnitNumericField(field)) {
         const value = isUnitStringField(field)
-          ? removeSpecialCharacters(record[field] ?? "")
+          ? sanitiseForTsv(record[field] ?? "")
           : record[field];
 
         row.push(value);
@@ -113,7 +113,7 @@ export const buildUnitTableRows = (
       if (isUnitStringArrayField(field)) {
         const options = updateFields[field];
         for (let i = 0; i < options.size; i++) {
-          row.push(removeSpecialCharacters(record[field]?.[i] ?? ""));
+          row.push(sanitiseForTsv(record[field]?.[i] ?? ""));
         }
       }
 

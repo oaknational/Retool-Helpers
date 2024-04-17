@@ -12,7 +12,7 @@ import {
   isSingleKeyArrayField,
   isStringField,
 } from "./types/bulkUpdateFields";
-import { removeSpecialCharacters } from "../index";
+import { sanitiseForTsv } from "../index";
 
 /**
  * Turns the array fields which contain an object with a single key, (i.e. teacher_tips, or key_learning_points), into a row of strings.
@@ -42,19 +42,19 @@ export const handleSingleKeyArrayField = (
     const valueIndex = updateFields[key].primaryElementKey;
 
     if ("key_learning_point" in value && valueIndex === "key_learning_point") {
-      row.push(removeSpecialCharacters(value[valueIndex]));
+      row.push(sanitiseForTsv(value[valueIndex]));
       continue;
     }
     if ("lesson_outline" in value && valueIndex === "lesson_outline") {
-      row.push(removeSpecialCharacters(value[valueIndex]));
+      row.push(sanitiseForTsv(value[valueIndex]));
       continue;
     }
     if ("teacher_tip" in value && valueIndex === "teacher_tip") {
-      row.push(removeSpecialCharacters(value[valueIndex]));
+      row.push(sanitiseForTsv(value[valueIndex]));
       continue;
     }
     if ("equipment" in value && valueIndex === "equipment") {
-      row.push(removeSpecialCharacters(value[valueIndex]));
+      row.push(sanitiseForTsv(value[valueIndex]));
       continue;
     }
 
@@ -89,10 +89,10 @@ export const handleJointKeyArrayField = (
     const secondaryKey = updateFields[key].secondaryElementKey;
 
     if ("keyword" in value && primaryKey === "keyword") {
-      row.push(removeSpecialCharacters(value[primaryKey]));
+      row.push(sanitiseForTsv(value[primaryKey]));
 
       if ("description" in value && secondaryKey === "description") {
-        row.push(removeSpecialCharacters(value[secondaryKey]));
+        row.push(sanitiseForTsv(value[secondaryKey]));
         continue;
       }
 
@@ -101,10 +101,10 @@ export const handleJointKeyArrayField = (
     }
 
     if ("misconception" in value && primaryKey === "misconception") {
-      row.push(removeSpecialCharacters(value[primaryKey]));
+      row.push(sanitiseForTsv(value[primaryKey]));
 
       if ("response" in value && secondaryKey === "response") {
-        row.push(removeSpecialCharacters(value[secondaryKey]));
+        row.push(sanitiseForTsv(value[secondaryKey]));
         continue;
       }
 
@@ -214,7 +214,7 @@ export const buildTableRows = (
     let field: keyof LessonUpdateFields;
     for (field in updateFields) {
       if (isStringField(field)) {
-        const value = removeSpecialCharacters(record[field]);
+        const value = sanitiseForTsv(record[field]);
         row.push(value);
       }
       if (isSingleKeyArrayField(field)) {

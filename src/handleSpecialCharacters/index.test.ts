@@ -1,4 +1,9 @@
-import { removeSpecialCharacters, insertSpecialCharacters } from "./index";
+import {
+  removeSpecialCharacters,
+  insertSpecialCharacters,
+  sanitiseForDb,
+  sanitiseForTsv,
+} from "./index";
 
 describe("handleSpecialCharacters", () => {
   describe("removeSpecialCharacters", () => {
@@ -100,6 +105,59 @@ describe("handleSpecialCharacters", () => {
           "here" +
           String.fromCharCode(92) +
           "again"
+      );
+    });
+  });
+  describe("sanitiseForTsv", () => {
+    test("sanitiseForTsv - single speech mark", () => {
+      expect(sanitiseForTsv(`hi' there 'hello`)).toBe(`hi’ there ’hello`);
+    });
+    test("sanitiseForTsv - double speech mark", () => {
+      expect(sanitiseForTsv(`che"ck ckc there "hello"`)).toBe(
+        `che”ck ckc there ”hello”`
+      );
+    });
+    test("sanitiseForTsv - tab", () => {
+      expect(sanitiseForTsv(`\ttab\ttab\ttab`)).toBe(`tabtabtab`);
+    });
+    test("sanitiseForTsv - line feed", () => {
+      expect(sanitiseForTsv(`\ncheck\nthe\nfeed`)).toBe(`checkthefeed`);
+    });
+    test("sanitiseForTsv - carriage return", () => {
+      expect(sanitiseForTsv(`\rreturn\rcheck\rnow`)).toBe(`returnchecknow`);
+    });
+    test("sanitiseForTsv - backslash", () => {
+      expect(sanitiseForTsv(`\\backslash\\here\\again`)).toBe(
+        `backslashhereagain`
+      );
+    });
+  });
+  describe("sanitiseForDb", () => {
+    test("sanitiseForDb - single speech mark", () => {
+      expect(sanitiseForDb(`hi’ there ’hello`)).toBe(`hi' there 'hello`);
+    });
+
+    test("sanitiseForDb - double speech mark", () => {
+      expect(sanitiseForDb(`che”ck ckc there ”hello`)).toBe(
+        `che"ck ckc there "hello`
+      );
+    });
+
+    test("sanitiseForDb - line feed", () => {
+      expect(sanitiseForDb(`\ncheck\nthe\nfeed`)).toBe(`checkthefeed`);
+    });
+
+    test("sanitiseForDb - carriage return", () => {
+      expect(sanitiseForDb(`\rreturn\rcheck\rnow`)).toBe(`returnchecknow`);
+    });
+
+    test("sanitiseForDb - tab", () => {
+      expect(sanitiseForDb(`\ttab\ttab\ttab`)).toBe(`tabtabtab`);
+    });
+
+    test("sanitiseForDb - backslash", () => {
+      expect(sanitiseForDb(`\\backslash\\here\\again`)).toBe(
+        `backslashhereagain`
       );
     });
   });
