@@ -22,7 +22,7 @@ import {
   isJointArrayField,
   isIdField,
 } from "./types/bulkUpdateFields";
-import { insertSpecialCharacters } from "../index";
+import { sanitiseForDb } from "../index";
 
 /**
  * Handles the non-id array fields, such as teacher_tips, key_learning_points, etc.
@@ -58,9 +58,7 @@ export const handleNonIdArrayFields = (
 
       if (currentValue) {
         if (secondaryKey && secondaryInitialValue) {
-          const secondaryUpdateValue = insertSpecialCharacters(
-            secondaryInitialValue
-          );
+          const secondaryUpdateValue = sanitiseForDb(secondaryInitialValue);
 
           if (
             "maxLengthSecondary" in fieldDetails &&
@@ -83,7 +81,7 @@ export const handleNonIdArrayFields = (
       }
       continue;
     }
-    const updateValue = insertSpecialCharacters(initialValue);
+    const updateValue = sanitiseForDb(initialValue);
 
     if (updateValue.toLowerCase().trim() === "null") {
       continue;
@@ -109,9 +107,7 @@ export const handleNonIdArrayFields = (
         val[secondaryKey] = "";
       }
       if (secondaryInitialValue && !secondaryValueIsNull) {
-        const secondaryUpdateValue = insertSpecialCharacters(
-          secondaryInitialValue
-        );
+        const secondaryUpdateValue = sanitiseForDb(secondaryInitialValue);
         if (
           "maxLengthSecondary" in fieldDetails &&
           secondaryUpdateValue.length > fieldDetails.maxLengthSecondary
@@ -198,7 +194,7 @@ export const handleStringFields = (
     return;
   }
 
-  const updateValue = insertSpecialCharacters(initialValue);
+  const updateValue = sanitiseForDb(initialValue);
 
   if (
     checkStringValue(

@@ -6,6 +6,8 @@ import { slugify } from "./slugify/index";
 import {
   removeSpecialCharacters,
   insertSpecialCharacters,
+  sanitiseForDb,
+  sanitiseForTsv,
 } from "./handleSpecialCharacters/index";
 
 import {
@@ -23,6 +25,8 @@ export {
   parseUpdates,
   buildUnitTableRows,
   parseUnitUpdates,
+  sanitiseForDb,
+  sanitiseForTsv,
 };
 
 // When bundled for the browser, this object
@@ -36,6 +40,8 @@ const oakRetoolHelpers = {
   parseUpdates,
   buildUnitTableRows,
   parseUnitUpdates,
+  sanitiseForDb,
+  sanitiseForTsv,
 };
 
 declare global {
