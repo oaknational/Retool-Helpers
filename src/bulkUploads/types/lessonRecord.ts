@@ -25,7 +25,7 @@ export type StringFields = {
   title: string;
   unit_uid: string;
   unit_title: string;
-  pupil_lesson_outcome: string;
+  pupil_lesson_outcome: string | null;
 };
 
 export type BulkFields =

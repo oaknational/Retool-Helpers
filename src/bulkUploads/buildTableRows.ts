@@ -214,7 +214,7 @@ export const buildTableRows = (
     let field: keyof LessonUpdateFields;
     for (field in updateFields) {
       if (isStringField(field)) {
-        const value = sanitiseForTsv(record[field]);
+        const value = sanitiseForTsv(record[field] ?? "");
         row.push(value);
       }
       if (isSingleKeyArrayField(field)) {
