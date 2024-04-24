@@ -53,7 +53,9 @@ export const sanitiseForTsv = (text: string): string => {
 export const sanitiseForDb = (text: string): string => {
   return text
     .replaceAll("’", "'")
+    .replaceAll("‘", "'")
     .replaceAll("”", '"')
+    .replaceAll("“", '"')
     .replaceAll("\n", "")
     .replaceAll("\r", "")
     .replaceAll("\t", "")
