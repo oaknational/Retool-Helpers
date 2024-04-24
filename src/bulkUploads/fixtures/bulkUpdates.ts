@@ -581,7 +581,7 @@ export const currentRecordsMap = new Map([
         },
         {
           description:
-            "comparative conjunctions are used to show a difference between two ideas (e.g. ‘whereas' )",
+            "comparative conjunctions are used to show a difference between two ideas (e.g. 'whereas' )",
           keyword: "comparative conjunctions",
         },
       ],
