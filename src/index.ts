@@ -16,6 +16,7 @@ import {
   buildUnitTableRows,
   parseUnitUpdates,
 } from "./bulkUploads/index";
+import { createSlackReport } from "./reportToSlack/index";
 
 export {
   slugify,
@@ -27,6 +28,7 @@ export {
   parseUnitUpdates,
   sanitiseForDb,
   sanitiseForTsv,
+  createSlackReport,
 };
 
 // When bundled for the browser, this object
@@ -42,6 +44,7 @@ const oakRetoolHelpers = {
   parseUnitUpdates,
   sanitiseForDb,
   sanitiseForTsv,
+  createSlackReport,
 };
 
 declare global {
