@@ -13,7 +13,7 @@ describe("createSlackReport", () => {
     });
     global.fetch = mockFetch;
 
-    const reportToSlack = createSlackReport(slackUrl);
+    const reportToSlack = createSlackReport(slackUrl, mockFetch);
     await reportToSlack(message, additionalInfo);
 
     expect(mockFetch).toHaveBeenCalledWith(slackUrl, {
@@ -63,7 +63,7 @@ describe("createSlackReport", () => {
     });
     global.fetch = mockFetch;
 
-    const reportToSlack = createSlackReport(slackUrl);
+    const reportToSlack = createSlackReport(slackUrl, mockFetch);
 
     await expect(reportToSlack(message, additionalInfo)).rejects.toThrow(
       "Failed to send report to Slack: 500 Internal Server Error"

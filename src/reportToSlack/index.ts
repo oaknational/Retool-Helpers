@@ -1,6 +1,9 @@
-export const createSlackReport = (slackUrl: string) => {
+export const createSlackReport = (
+  slackUrl: string,
+  fetchPassIn: typeof fetch
+) => {
   return async (message: string, additionalInfo: Record<string, unknown>) => {
-    const res = await fetch(slackUrl, {
+    const res = await fetchPassIn(slackUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
