@@ -17,6 +17,8 @@ jobs:
   semantic_release:
     name: semantic release
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v3
 
@@ -44,4 +46,3 @@ jobs:
           # workflows, if you need that see
           # https://github.com/semantic-release/github#github-authentication
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
