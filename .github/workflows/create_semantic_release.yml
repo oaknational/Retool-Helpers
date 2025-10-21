@@ -23,7 +23,8 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 24.x
+          registry-url: 'https://registry.npmjs.org'
           cache: "npm"
 
       # Install
@@ -44,4 +45,3 @@ jobs:
           # workflows, if you need that see
           # https://github.com/semantic-release/github#github-authentication
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
