@@ -18,8 +18,8 @@ import {
 } from "./bulkUploads/index";
 import { createSlackReport } from "./reportToSlack/index";
 
+export { slugify } from "./slugify/index";
 export {
-  slugify,
   removeSpecialCharacters,
   insertSpecialCharacters,
   buildTableRows,
