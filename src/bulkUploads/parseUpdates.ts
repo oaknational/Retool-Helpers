@@ -207,7 +207,6 @@ export const handleStringFields = (
     )
   ) {
     updateAsRecord[key] = updateValue;
-    return;
   }
 };
 
@@ -371,7 +370,7 @@ export const parseUpdates = (
       }
       return updateAsRecord;
     })
-    .filter((update) => update !== undefined) as Partial<LessonRecord>[];
+    .filter((update): update is Partial<LessonRecord> => update !== undefined);
 
   return {
     hasError: hasError(),

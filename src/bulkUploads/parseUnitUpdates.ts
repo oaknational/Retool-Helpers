@@ -199,8 +199,6 @@ export const parseUnitUpdates = (
 
             if (val) {
               updateCollection.push({ id: val, text: updateValue });
-
-              continue;
             } else {
               let errorKey;
 
@@ -223,7 +221,7 @@ export const parseUnitUpdates = (
 
       return updateAsRecord;
     })
-    .filter((update) => update !== undefined) as Partial<UnitRecord>[];
+    .filter((update): update is Partial<UnitRecord> => update !== undefined);
 
   return {
     hasError: hasError(),
