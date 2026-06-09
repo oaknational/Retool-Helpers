@@ -9,10 +9,10 @@ export const removeSpecialCharacters = (text: string): string => {
   return text
     .replace("'", "’")
     .replace('"', "”")
-    .replaceAll(String.fromCharCode(10), "")
-    .replaceAll(String.fromCharCode(13), "")
-    .replaceAll(String.fromCharCode(9), "\\t")
-    .replaceAll(String.fromCharCode(92), String.fromCharCode(92, 92));
+    .replaceAll(String.fromCodePoint(10), "")
+    .replaceAll(String.fromCodePoint(13), "")
+    .replaceAll(String.fromCodePoint(9), "\\t")
+    .replaceAll(String.fromCodePoint(92), String.fromCodePoint(92, 92));
 };
 
 /**
@@ -28,8 +28,8 @@ export const insertSpecialCharacters = (text: string): string => {
     .replace("”", '"')
     .replaceAll("\n", "")
     .replaceAll("\r", "")
-    .replaceAll("\\t", String.fromCharCode(9))
-    .replaceAll(String.fromCharCode(92, 92), String.fromCharCode(92));
+    .replaceAll("\\t", String.fromCodePoint(9))
+    .replaceAll(String.fromCodePoint(92, 92), String.fromCodePoint(92));
 };
 
 /**
