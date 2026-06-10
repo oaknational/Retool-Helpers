@@ -18,18 +18,20 @@ import {
 } from "./bulkUploads/index";
 import { createSlackReport } from "./reportToSlack/index";
 
+export { slugify } from "./slugify/index";
 export {
-  slugify,
   removeSpecialCharacters,
   insertSpecialCharacters,
+  sanitiseForDb,
+  sanitiseForTsv,
+} from "./handleSpecialCharacters/index";
+export {
   buildTableRows,
   parseUpdates,
   buildUnitTableRows,
   parseUnitUpdates,
-  sanitiseForDb,
-  sanitiseForTsv,
-  createSlackReport,
-};
+} from "./bulkUploads/index";
+export { createSlackReport } from "./reportToSlack/index";
 
 // When bundled for the browser, this object
 // will be exposed on the Window object as
